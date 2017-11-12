@@ -1,4 +1,4 @@
-import config from './environment';
+import config from './env';
 
 const setting = {
     server: {

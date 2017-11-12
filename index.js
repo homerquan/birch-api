@@ -6,7 +6,7 @@
  */
 
 import express from 'express';
-import config from './config/environment';
+import config from './config/env';
 import cors from 'cors';
 import $ from './libs/dollar';
 import {init as initSocketio} from './config/socketio';

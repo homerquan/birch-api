@@ -1,4 +1,4 @@
-import config from '../config/environment';
+import config from '../config/env';
 import Hashids from 'hashids';
 
 //Use customer logger later

@@ -2,7 +2,7 @@
 
 import express from 'express';
 import passport from 'passport';
-import config from '../config/environment';
+import config from '../config/env';
 import User from '../api/user/user.model';
 import * as localPassport from './local/passport';
 import {default as localRoutes} from './local';

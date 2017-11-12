@@ -17,7 +17,7 @@ class Dollar {
     if (!instance) {
       instance = this;
     }
-    this.config = require('../config/environment');
+    this.config = require('../config/env');
     this.mg = mongoose;
     this.log = logger;
     return instance;

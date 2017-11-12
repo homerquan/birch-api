@@ -2,7 +2,7 @@
 
 import User from './user.model';
 import passport from 'passport';
-import config from '../../config/environment';
+import config from '../../config/env';
 import jwt from 'jsonwebtoken';
 
 function validationError(res, statusCode) {

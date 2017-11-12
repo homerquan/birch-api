@@ -4,7 +4,7 @@
 
 'use strict';
 
-import config from './environment';
+import config from './env';
 import Logger from '../libs/logger';
 import jwt from 'jsonwebtoken';
 import socketioJwt from 'socketio-jwt';
