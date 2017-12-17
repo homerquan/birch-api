@@ -6,15 +6,20 @@
  */
 
 import express from 'express';
+import expressGraphQL from "express-graphql";
 import config from './config/environment';
 import cors from 'cors';
 import $ from './libs/dollar';
 import {init as initSocketio} from './config/socketio';
 import {init as initExpress} from './config/express';
 import {load as loadRoutes} from './routes';
+import { PubSub } from "graphql-subscriptions";
+import { SubscriptionServer } from "subscriptions-transport-ws";
+import { execute, subscribe } from "graphql";
+import schema from '../gql/schema';
 
 // register app with backend
-const backend = (app,socketio) => {
+const backend = (app, server) => {
 
 	// Connect to MongoDB
 	$['mg'].connect(config.mongo.uri, config.mongo.options);
@@ -24,9 +29,38 @@ const backend = (app,socketio) => {
 	});
 
 	// Populate databases with sample data
-	if (config.seedDB) {
+	if (config.env === 'development' && config.seedDB) {
 		require('./config/seed');
 	}
+
+	// socketio server
+	const socketio = require('socket.io')(server, {
+	    serveClient: config.env !== 'production',
+	    path: '/socket.io-client'
+	  });
+	
+	// Register API middleware
+	// -----------------------------------------------------------------------------
+	const graphqlMiddleware = expressGraphQL(req => ({
+		schema,
+		graphiql: true,
+		rootValue: { request: req },
+		pretty: true
+	}));
+
+	app.use("/graphql", graphqlMiddleware);
+
+	const subscriptionServer = SubscriptionServer.create(
+		{
+			schema,
+			execute,
+			subscribe
+		},
+		{
+			server: server,
+			path: "/graphql"
+		}
+	);
 
 	initSocketio(socketio.of(config.socketNamespace));
 	initExpress(app);
