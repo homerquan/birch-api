@@ -34,7 +34,7 @@ if (config.env === 'development') {
   app.enable("trust proxy");
 }
 
-// Load backend (api, auth, socketio)
+// Load backend (api, auth, graphql, socketio)
 // -----------------------------------------------------------------------------
 backendServer(app, server);
 
