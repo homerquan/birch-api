@@ -6,17 +6,19 @@
  */
 
 import express from "express";
-import expressGraphQL from "express-graphql";
 import config from "./config/environment";
 import cors from "cors";
 import $ from "./libs/dollar";
 import { init as initSocketio } from "./config/socketio";
 import { init as initExpress } from "./config/express";
 import { load as loadRoutes } from "./routes";
+import expressGraphQL from "express-graphql";
 import { PubSub } from "graphql-subscriptions";
 import { SubscriptionServer } from "subscriptions-transport-ws";
 import { execute, subscribe } from "graphql";
-import { subscriptionManager, schema } from "./graphql/subscriptions";
+import { makeExecutableSchema } from "graphql-tools";
+import resolvers from "./graphql/resolvers";
+import typeDefs from "./graphql/schema.graphql";
 
 // register app with backend
 const backend = (app, server) => {
@@ -32,8 +34,16 @@ const backend = (app, server) => {
 		require("./config/seed");
 	}
 
+	// make schema executable
+	const schema = makeExecutableSchema({
+		typeDefs,
+		resolvers
+	});
+
+	// any additional context you use for your resolvers, if any
+	const context = {};
+
 	// Register API middleware
-	// -----------------------------------------------------------------------------
 	const graphqlMiddleware = expressGraphQL(req => ({
 		schema,
 		graphiql: true,
@@ -43,26 +53,26 @@ const backend = (app, server) => {
 
 	app.use("/graphql", graphqlMiddleware);
 
-	const subscriptionServer = new SubscriptionServer(
+	// GraphQL subscription
+	// create subscription server
+	new SubscriptionServer(
 		{
-			onConnect: async (connectionParams, webSocket) => {
-				console.log("WebSocket connection established");
-				// the following object fields will be added to subscriptions context and filter methods
-				return {
-					authToken: connectionParams.authToken
-				};
-			},
-			onUnsubscribe: (a, b) => {
-				console.log("Unsubscribing");
-			},
-			onDisconnect: (a, b) => {
-				console.log("Disconnecting");
-			},
-			subscriptionManager: subscriptionManager
+			schema,
+			execute,
+			subscribe
+			// // on connect subscription lifecycle event
+			// onConnect: async (connectionParams, webSocket) => {
+			//   // if a meteor login token is passed to the connection params from the client,
+			//   // add the current user to the subscription context
+			//   const subscriptionContext = connectionParams.authToken
+			//     ? await addCurrentUserToContext(context, connectionParams.authToken)
+			//     : context;
+			//   return subscriptionContext;
+			// }
 		},
 		{
 			server: server,
-			path: "/"
+			path: "/graphql-sub"
 		}
 	);
 
