@@ -48,7 +48,8 @@ const backend = (app, server) => {
 		schema,
 		graphiql: true,
 		rootValue: { request: req },
-		pretty: true
+		pretty: true,
+		subscriptionsEndpoint: '/graphql-subscriptions'
 	}));
 
 	app.use("/graphql", graphqlMiddleware);
