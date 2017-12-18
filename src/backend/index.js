@@ -72,7 +72,7 @@ const backend = (app, server) => {
 		},
 		{
 			server: server,
-			path: "/graphql-sub"
+			path: "/graphql-subscriptions"
 		}
 	);
 

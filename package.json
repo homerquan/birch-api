@@ -36,6 +36,7 @@
     "express-session": "^1.15.6",
     "express-validator": "^4.3.0",
     "figlet": "^1.2.0",
+    "graphiql": "^0.11.10",
     "graphql": "^0.12.3",
     "graphql-subscriptions": "^0.5.5",
     "graphql-tools": "^2.13.0",
