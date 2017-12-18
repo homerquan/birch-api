@@ -6,6 +6,10 @@
   "directories": {
     "test": "test"
   },
+  "engines": {
+    "node": ">=6.5",
+    "npm": ">=3.10"
+  },
   "scripts": {
     "prestart": "if [ ! -d node_modules ]; then npm install; fi",
     "dev": "babel-node src/server",
@@ -20,7 +24,6 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/refleninc/convospot-console-api#readme",
   "dependencies": {
-    "babel-plugin-inline-import": "^2.0.6",
     "bluebird": "^3.5.1",
     "composable-middleware": "^0.3.0",
     "compression": "^1.7.1",
@@ -42,6 +45,7 @@
     "graphql-tools": "^2.13.0",
     "hashids": "^1.1.4",
     "isomorphic-fetch": "^2.2.1",
+    "json-stringify-safe": "^5.0.1",
     "lusca": "^1.5.2",
     "method-override": "^2.3.10",
     "mongoose": "^4.13.7",
@@ -51,8 +55,11 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pretty-error": "^2.1.1",
+    "pubsub-js": "^1.5.7",
     "rc": "^1.2.2",
     "redis": "^2.8.0",
+    "seneca": "3.2.0",
+    "seneca-amqp-transport": "1.1.1",
     "serve-favicon": "^2.4.5",
     "socket.io": "^2.0.4",
     "socketio-jwt": "^4.5.0",

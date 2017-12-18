@@ -1,16 +1,12 @@
 import config from './environment';
 
-const setting = {
+module.exports = {
     server: {
         type: 'amqp',
         url: config.amqpConn,
-        pin: 'role:convospot-console'
+        pin: 'role:convospot-console-api'
     },
     clients: [{
-        type: 'amqp',
-        url: config.amqpConn,
-        pin: 'role:convospot-engine'
-    },{
         type: 'amqp',
         url: config.amqpConn,
         pin: 'role:convospot-api'
@@ -19,6 +15,4 @@ const setting = {
         url: config.amqpConn,
         pin: 'role:convospot-email'
     }]
-};
-
-export {setting};
+}

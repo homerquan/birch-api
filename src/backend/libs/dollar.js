@@ -8,6 +8,7 @@
 import logger from './logger';
 import Promise from 'bluebird';
 
+const ms = require('./seneca');
 const mongoose = Promise.promisifyAll(require('mongoose'));
 
 let instance = null;
@@ -20,6 +21,7 @@ class Dollar {
     this.config = require('../config/environment');
     this.mg = mongoose;
     this.log = logger;
+    this.ms = ms;
     return instance;
   }
 }

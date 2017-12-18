@@ -4,8 +4,8 @@
 
 import pubsub from 'pubsub-js';
 
-const services = [{
-	pattern: 'role:convospot-console,cmd:create_message',
+module.exports = [{
+	pattern: 'role:convospot-console-api,cmd:create_message',
 	action: (msg, cb) => {
 		pubsub.publish('create_message', msg);
 		cb(null, {
@@ -13,14 +13,11 @@ const services = [{
 		});
 	}
 }, {
-	pattern: 'role:convospot-console,cmd:create_conversation',
+	pattern: 'role:convospot-console-api,cmd:update_conversations',
 	action: (msg, cb) => {
-		console.log('create_message');
-		pubsub.publish('create_conversation', msg);
+		pubsub.publish('update_conversations', msg);
 		cb(null, {
 			code: 'console-ok'
 		});
 	}
 }];
-
-export {services};

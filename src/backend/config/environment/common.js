@@ -14,6 +14,9 @@ module.exports = {
 	// Server IP
   ip: process.env.IP || '0.0.0.0',
 
+  // Seneca microservcies
+  amqpConn:  'amqp://guest:guest@localhost:5672/seneca',
+
   // API Gateway
   api: {
     // API URL to be used in the client-side code

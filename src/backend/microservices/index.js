@@ -1,11 +1,10 @@
-import {services as apiServices} from './api';
 import _  from 'lodash';
 
 var services = _.union(
-	apiServices
+	require('./api'),
 );
 
-export default (options) => {
+module.exports = function convospot(options) {
     for (var i in services) {
         this.add(services[i].pattern, services[i].action)
     };

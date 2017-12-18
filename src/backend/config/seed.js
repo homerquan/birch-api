@@ -8,12 +8,6 @@ import App from '../api/app/app.model';
 import User from '../api/user/user.model';
 import Verification from '../api/verification/verification.model';
 
-// Message.find({}).removeAsync();
-
-// Qna.find({}).removeAsync();
-
-// Verification.find({}).removeAsync();
-
 User.find({}).removeAsync()
     .then(function() {
         User.createAsync({
@@ -71,8 +65,6 @@ App.find({}).removeAsync()
                 console.log('finished populating apps');
             });
     });
-
-// Conversation.find({}).removeAsync()
 
 // Knowledge.find({}).removeAsync()
 //     .then(function() {

@@ -1,9 +1,6 @@
-import {
-    setting
-} from '../config/seneca';
-import ms from '../microservices';
-import Promise from 'bluebird';
-
+const config = require('../config/seneca');
+const Promise = require('bluebird');
+const ms = require('../microservices');
 const seneca = Promise.promisifyAll(require('seneca')());
 const start = function(services, option) {
     var senecaService = seneca
@@ -18,10 +15,16 @@ const start = function(services, option) {
     return senecaService;
 }
 
-const handler = start(ms, setting);
+const handler = start(ms, config);
 
-export default (role, cmd, data) => {
-    if (handler && cmd) {
-        return handler.actAsync(`role:${role},cmd:${cmd}`, data);
+/**
+ * A function to send act to senca
+ * e.g., seneca.act(role,cmd,data)
+ */
+module.exports = {
+    act: function(role, cmd, data) {
+        if (handler && cmd) {
+            return handler.actAsync(`role:${role},cmd:${cmd}`, data);
+        }
     }
 }

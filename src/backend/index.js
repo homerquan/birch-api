@@ -18,7 +18,8 @@ import { SubscriptionServer } from "subscriptions-transport-ws";
 import { execute, subscribe } from "graphql";
 import { makeExecutableSchema } from "graphql-tools";
 import resolvers from "./graphql/resolvers";
-import typeDefs from "./graphql/schema.graphql";
+import typeDefs from "./graphql/schema";
+
 
 // register app with backend
 const backend = (app, server) => {
