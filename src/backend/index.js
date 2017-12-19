@@ -45,8 +45,7 @@ const backend = (app, server) => {
 	initExpress(app);
 	loadRoutes(app);
 
-	//Setup GRAPHQL 
-	
+	//Setup GRAPHQL 	
 	// make schema executable
 	const schema = makeExecutableSchema({
 		typeDefs,

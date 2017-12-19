@@ -8,6 +8,8 @@ const resolvers = {
       return 'test ok';
     },
     conversations(obj, args, context) {
+      //test 
+      pubsub.publish('onConversationUpdated', { conversationUpdated: {id:"demo"}, channelId: "123" });
       // args has no filter
       return $['ms']
         .act("convospot-api", "list_conversations", {
@@ -28,16 +30,16 @@ const resolvers = {
   },
 
   Subscription: {
-    conversationUpdated: {
+    onConversationUpdated: {
       // See: https://github.com/apollographql/graphql-subscriptions#channels-mapping
       // Take a look at "Channels Mapping" for handling multiple create, update, delete events
       // Also, check out "PubSub Implementations" for using Redis instead of PubSub
       // PubSub is not recommended for production because it won't work if you have multiple servers
       // withFilter makes it so you can only listen to changes to this person instead of all people
       subscribe: withFilter(
-        () => pubsub.asyncIterator("conversationUpdated"),
+        () => pubsub.asyncIterator("onConversationUpdated"),
         (payload, args) => {
-          return payload.conversationUpdated.id === args.id;
+          return payload.channelId === variables.channelId;
         }
       )
     }

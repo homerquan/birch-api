@@ -21,7 +21,7 @@ type Mutation {
 }
 
 type Subscription {
-  conversationUpdated: Conversation
+  onConversationUpdated: Conversation
 }
 
 schema {
