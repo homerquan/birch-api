@@ -13,7 +13,7 @@ type Conversation {
 
 type Query {
   test: String
-  conversations(client: String!): [Conversation]
+  conversations: [Conversation]
 }
 
 type Mutation {
@@ -21,7 +21,7 @@ type Mutation {
 }
 
 type Subscription {
-  conversationUpdated(id: ID!): Conversation
+  conversationUpdated: Conversation
 }
 
 schema {

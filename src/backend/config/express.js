@@ -107,6 +107,7 @@ const init = (app) => {
     }
 
     if ('development' === env) {
+        console.log('Enable cors for all, for development only!');
         app.use(cors());
     }
 

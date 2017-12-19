@@ -35,6 +35,18 @@ const backend = (app, server) => {
 		require("./config/seed");
 	}
 
+	// socketio server
+	const socketio = require("socket.io")(server, {
+		serveClient: config.env !== "production",
+		path: "/socket.io-client"
+	});
+
+	initSocketio(socketio.of(config.socketNamespace));
+	initExpress(app);
+	loadRoutes(app);
+
+	//Setup GRAPHQL 
+	
 	// make schema executable
 	const schema = makeExecutableSchema({
 		typeDefs,
@@ -77,16 +89,6 @@ const backend = (app, server) => {
 			path: "/graphql-subscriptions"
 		}
 	);
-
-	// socketio server
-	const socketio = require("socket.io")(server, {
-		serveClient: config.env !== "production",
-		path: "/socket.io-client"
-	});
-
-	initSocketio(socketio.of(config.socketNamespace));
-	initExpress(app);
-	loadRoutes(app);
 };
 
 export default backend;
