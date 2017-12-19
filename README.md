@@ -1,3 +1,8 @@
+## TODOs
+
+* Auth logic 
+  * ref: https://github.com/srtucker22/chatty/ (server)
+
 ## Test
 
 ```

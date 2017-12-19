@@ -11,15 +11,8 @@ import cors from "cors";
 import $ from "./libs/dollar";
 import { init as initSocketio } from "./config/socketio";
 import { init as initExpress } from "./config/express";
+import { init as initGraphQL } from "./config/graphql";
 import { load as loadRoutes } from "./routes";
-import expressGraphQL from "express-graphql";
-import { PubSub } from "graphql-subscriptions";
-import { SubscriptionServer } from "subscriptions-transport-ws";
-import { execute, subscribe } from "graphql";
-import { makeExecutableSchema } from "graphql-tools";
-import resolvers from "./graphql/resolvers";
-import typeDefs from "./graphql/schema";
-
 
 // register app with backend
 const backend = (app, server) => {
@@ -43,51 +36,10 @@ const backend = (app, server) => {
 
 	initSocketio(socketio.of(config.socketNamespace));
 	initExpress(app);
+	initGraphQL(app,server);
 	loadRoutes(app);
 
-	//Setup GRAPHQL 	
-	// make schema executable
-	const schema = makeExecutableSchema({
-		typeDefs,
-		resolvers
-	});
-
-	// any additional context you use for your resolvers, if any
-	const context = {};
-
-	// Register API middleware
-	const graphqlMiddleware = expressGraphQL(req => ({
-		schema,
-		graphiql: true,
-		rootValue: { request: req },
-		pretty: true,
-		subscriptionsEndpoint: '/graphql-subscriptions'
-	}));
-
-	app.use("/graphql", graphqlMiddleware);
-
-	// GraphQL subscription
-	// create subscription server
-	new SubscriptionServer(
-		{
-			schema,
-			execute,
-			subscribe
-			// // on connect subscription lifecycle event
-			// onConnect: async (connectionParams, webSocket) => {
-			//   // if a meteor login token is passed to the connection params from the client,
-			//   // add the current user to the subscription context
-			//   const subscriptionContext = connectionParams.authToken
-			//     ? await addCurrentUserToContext(context, connectionParams.authToken)
-			//     : context;
-			//   return subscriptionContext;
-			// }
-		},
-		{
-			server: server,
-			path: "/graphql-subscriptions"
-		}
-	);
+	
 };
 
 export default backend;

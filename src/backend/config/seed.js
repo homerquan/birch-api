@@ -65,19 +65,3 @@ App.find({}).removeAsync()
                 console.log('finished populating apps');
             });
     });
-
-// Knowledge.find({}).removeAsync()
-//     .then(function() {
-//         Knowledge.createAsync({
-//             raw: `
-// ## What are appointments like?
-
-// You will be welcomed warmly by the practice and your care team each time you visit. Your appointments may vary depending on what your needs are. For a first appointment, we ask that you allow for 1 hour to establish care and get to know your care team.
-//       `,
-//             app: 'dc45ebba-373b-11e6-ac61-9e71128cae77',
-//             _owner: 'f34b03c0-422d-11e6-8585-d7351c23bc39'
-//         })
-//             .then(function() {
-//                 console.log('finished populating apps');
-//             });
-//     });
