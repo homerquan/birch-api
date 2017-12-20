@@ -126,7 +126,7 @@ UserSchema
 // Validate email is not taken
 UserSchema
     .path('email')
-    .validate(function(value, respond) {
+    .validate(function(value) {
         var self = this;
         return this.constructor.findOneAsync({
                 email: value
@@ -134,11 +134,11 @@ UserSchema
             .then(function(user) {
                 if (user) {
                     if (self.id === user.id) {
-                        return respond(true);
+                        return true;
                     }
-                    return respond(false);
+                    return false;
                 }
-                return respond(true);
+                return true;
             })
             .catch(function(err) {
                 throw err;
@@ -169,7 +169,7 @@ UserSchema
                     next(saltErr);
                 }
                 _this.salt = salt;
-                _this.encryptPassword(_this.password, 'random_digest' , function(encryptErr, hashedPassword) {
+                _this.encryptPassword(_this.password, function(encryptErr, hashedPassword) {
                     if (encryptErr) {
                         next(encryptErr);
                     }
@@ -268,25 +268,25 @@ UserSchema.methods = {
      * @api public
      */
     encryptPassword: function(password, callback) {
-        // if (!password || !this.salt) {
-        //     return null;
-        // }
+        if (!password || !this.salt) {
+            return null;
+        }
 
-        // var defaultIterations = 10000;
-        // var defaultKeyLength = 64;
-        // var salt = new Buffer(this.salt, 'base64');
+        var defaultIterations = 10000;
+        var defaultKeyLength = 64;
+        var salt = new Buffer(this.salt, 'base64');
 
-        // if (!callback) {
-        //     return crypto.pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength)
-        //         .toString('base64');
-        // }
+        if (!callback) {
+            return crypto.pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength)
+                .toString('base64');
+        }
 
-        // return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength, 'sha512', function(err, key) {
-        //     if (err) {
-        //         callback(err);
-        //     }
-        //     return callback(null, key.toString('base64'));
-        // });
+        return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength, 'sha512', function(err, key) {
+            if (err) {
+                callback(err);
+            }
+            return callback(null, key.toString('base64'));
+        });
     }
 };
 
