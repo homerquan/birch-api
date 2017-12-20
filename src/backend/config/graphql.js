@@ -1,6 +1,6 @@
 import config from "../config/environment";
 import expressGraphQL from "express-graphql";
-import { graphiqlExpress } = from 'graphql-server-express';
+import { graphiqlExpress } from 'graphql-server-express';
 import bodyParser from 'body-parser';
 import { PubSub } from "graphql-subscriptions";
 import { SubscriptionServer } from "subscriptions-transport-ws";

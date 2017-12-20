@@ -13,6 +13,7 @@ type Conversation {
 
 type Query {
   test: String
+  now: String
   conversations: [Conversation]
 }
 
@@ -21,6 +22,7 @@ type Mutation {
 }
 
 type Subscription {
+  now: String
   conversationAdded(clientId:String): Conversation
 }
 

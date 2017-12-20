@@ -4,6 +4,13 @@ import $ from "../libs/dollar";
 
 const CONVERSATION_ADDED_TOPIC = 'conversationAdded';
 
+//demo
+const timer = setInterval(() => {
+  const now = (new Date()).toString();
+  console.log(now);
+  pubsub.publish('now', {now});
+}, 1000);
+
 const resolvers = {
   Query: {
    test() {
@@ -34,6 +41,9 @@ const resolvers = {
   Subscription: {
     conversationAdded(message, variables, context, subscription) {
        subscribe: () => pubsub.asyncIterator(CONVERSATION_ADDED_TOPIC)
+    },
+    now: {
+      subscribe: () => pubsub.asyncIterator('now'),
     }
   }
 };
