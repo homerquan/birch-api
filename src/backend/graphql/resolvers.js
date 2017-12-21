@@ -9,6 +9,7 @@ const timer = setInterval(() => {
   const now = (new Date()).toString();
   console.log(now);
   pubsub.publish('now', {now});
+  pubsub.publish('nowWithFilter', {nowWithFilter: now+'test to user 5821d2b0-e660-11e7-a1e8-a73d2ee333a4', client:'5821d2b0-e660-11e7-a1e8-a73d2ee333a4'});
 }, 1000);
 
 const resolvers = {
@@ -44,7 +45,17 @@ const resolvers = {
     },
     now: {
       subscribe: () => pubsub.asyncIterator('now'),
-    }
+    },
+    nowWithFilter: {
+      subscribe: withFilter(
+        () => pubsub.asyncIterator('nowWithFilter'),
+        (payload, args, ctx) => {
+            return Boolean(
+              args.userId && args.userId === payload.client
+            );
+        },
+      ),
+    },
   }
 };
 

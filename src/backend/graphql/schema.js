@@ -23,6 +23,7 @@ type Mutation {
 
 type Subscription {
   now: String
+  nowWithFilter(userId:String): String
   conversationAdded(clientId:String): Conversation
 }
 
