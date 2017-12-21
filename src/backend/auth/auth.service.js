@@ -75,6 +75,15 @@ function signToken(id, role) {
 }
 
 /**
+ * Returns a refresh token signed by the app secret
+ */
+function signRefreshToken(id, role) {
+  return jwt.sign({ _id: id, role: role }, config.secrets.session, {
+    expiresIn: config.refreshTokenExpireIn
+  });
+}
+
+/**
  * Set token cookie directly for oAuth strategies
  */
 function setTokenCookie(req, res) {
@@ -86,4 +95,4 @@ function setTokenCookie(req, res) {
   res.redirect('/');
 }
 
-export default {isAuthenticated,hasRole,signToken,setTokenCookie}
+export default {isAuthenticated,hasRole,signToken,signRefreshToken,setTokenCookie}

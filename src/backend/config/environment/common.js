@@ -83,4 +83,5 @@ module.exports = {
   },
 
   loginTokenExpireIn: '24h',
+  refreshTokenExpireIn: '96h',
 };
