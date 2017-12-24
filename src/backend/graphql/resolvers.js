@@ -18,12 +18,16 @@ const resolvers = {
       return 'test ok';
     },
     conversations(obj, args, context) {
-      //test 
-      pubsub.publish(CONVERSATION_ADDED_TOPIC, "test");
-      // args has no filter
       return $['ms']
         .act("convospot-api", "list_conversations", {
-          client: args.client
+          client: args.clientId
+        })
+    },
+    messages(obj, args, context) {
+      return $['ms']
+        .act("convospot-api", "list_messages", {
+          conversation: args.conversationId,
+          client: args.clientId
         })
     },
   },

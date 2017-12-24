@@ -1,7 +1,7 @@
 const typeDefs = `
 
 type Conversation {
-  id: ID
+  id: String
   visitor: String
   bot: String
   client: String
@@ -11,14 +11,24 @@ type Conversation {
   updatedAt: String
 }
 
+type Message {
+  id: String
+  text: String
+  bot: String
+  client: String
+  createdAt: String
+  updatedAt: String
+}
+
 type Query {
   test: String
   now: String
-  conversations: [Conversation]
+  conversations(clientId: String): [Conversation]
+  messages(conversationId: String, clientId: String): [Message]
 }
 
 type Mutation {
-  updateConversation(id: ID!): Conversation
+  updateConversation(conversationId: String!): Conversation
 }
 
 type Subscription {
