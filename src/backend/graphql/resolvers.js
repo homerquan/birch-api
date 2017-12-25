@@ -40,7 +40,14 @@ const resolvers = {
       // Note: You must publish the object with the subscription name nested in the object!
       // See: https://github.com/apollographql/graphql-subscriptions/issues/51
       return args;
-    }
+    },
+    addMessage (obj, args, context) {
+      return $['ms']
+        .act("convospot-api", "add_message", {
+          conversation: args.conversationId,
+          text: args.text
+        })
+    }  
   },
 
   Subscription: {

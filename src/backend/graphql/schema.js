@@ -14,6 +14,10 @@ type Conversation {
 type Message {
   id: String
   text: String
+  source: String
+  sourceId: String
+  destination: String
+  destinationId: String
   bot: String
   client: String
   createdAt: String
@@ -29,6 +33,7 @@ type Query {
 
 type Mutation {
   updateConversation(conversationId: String!): Conversation
+  addMessage(text: String!, conversationId: String!): Message
 }
 
 type Subscription {

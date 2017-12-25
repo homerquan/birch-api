@@ -17,6 +17,7 @@ User.find({})
     .then(function() {
         User.createAsync(
             {
+                _id: "ddcd39c9-dcbc-4a26-bcf7-525d77c12d54",
                 provider: "local",
                 name: "demo",
                 email: "lujooo@gmail.com",
