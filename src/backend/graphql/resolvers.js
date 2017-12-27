@@ -20,13 +20,21 @@ const resolvers = {
     conversations(obj, args, context) {
       return $['ms']
         .act("convospot-api", "list_conversations", {
-          client: args.clientId
+          client: args.clientId,
+          bot: args.botId,
+          status: 'online'
         })
     },
     messages(obj, args, context) {
       return $['ms']
         .act("convospot-api", "list_messages", {
           conversation: args.conversationId,
+          client: args.clientId
+        })
+    },
+    bots(obj, args, context) {
+      return $['ms']
+        .act("convospot-api", "list_bots", {
           client: args.clientId
         })
     },

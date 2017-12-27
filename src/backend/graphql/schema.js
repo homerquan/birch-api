@@ -24,11 +24,21 @@ type Message {
   updatedAt: String
 }
 
+type Bot {
+  id: String
+  name: String
+  host: String
+  client: String
+  createdAt: String
+  updatedAt: String
+}
+
 type Query {
   test: String
   now: String
-  conversations(clientId: String): [Conversation]
+  conversations(clientId: String, botId: String): [Conversation]
   messages(conversationId: String, clientId: String): [Message]
+  bots(clientId: String): [Bot]
 }
 
 type Mutation {

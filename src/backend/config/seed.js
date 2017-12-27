@@ -37,34 +37,18 @@ App.find({})
     .then(function() {
         App.createAsync(
             {
-                name: "demo_app",
+                name: "demo app",
                 protocol: "http",
                 hostname: "www.convospot.io",
                 sid: "906384612820742",
-                category: 99,
-                personality: {
-                    responsive: 3,
-                    prudential: 3
-                },
-                settings: {
-                    summaryEmail: true
-                },
                 _id: "dc45ebba-373b-11e6-ac61-9e71128cae77",
                 _owner: "f34b03c0-422d-11e6-8585-d7351c23bc39"
             },
             {
-                name: "homer_app",
+                name: "homer app",
                 protocol: "http",
                 hostname: "www.convospot.io",
                 sid: "906384612820743",
-                category: 99,
-                personality: {
-                    responsive: 3,
-                    prudential: 3
-                },
-                settings: {
-                    summaryEmail: true
-                },
                 _id: "dc45ebba-373b-11e6-ac61-9e71128cae78",
                 _owner: "f34b03c0-422d-11e6-8585-d7351c23bc39"
             }

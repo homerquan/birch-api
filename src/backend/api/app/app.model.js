@@ -22,10 +22,6 @@ var schema = {
     },
     hostname: {
         type: String,
-        // validate: {
-        //     validator: validator.isURL,
-        //     message: '{VALUE} is not a valid hostname'
-        // },
         required: true
     },
     category: Number,
