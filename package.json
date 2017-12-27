@@ -14,7 +14,8 @@
     "prestart": "if [ ! -d node_modules ]; then npm install; fi",
     "dev": "babel-node src/server",
     "start": "babel-node src/server",
-    "debug": "babel-node --inspect --debug-brk src/server",
+    "debug": "babel-node debug src/server",
+    "inspect": "babel-node --inspect --debug-brk src/server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

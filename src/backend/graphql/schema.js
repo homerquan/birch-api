@@ -5,6 +5,7 @@ type Conversation {
   visitor: String
   bot: String
   client: String
+  status: String
   mode: String
   token: String
   createdAt: String
@@ -43,13 +44,16 @@ type Query {
 
 type Mutation {
   updateConversation(conversationId: String!): Conversation
-  addMessage(text: String!, conversationId: String!): Message
+  createMessage(text: String!, conversationId: String!): Message
 }
 
 type Subscription {
   now: String
   nowWithFilter(userId:String): String
-  conversationAdded(clientId:String): Conversation
+  createConversation(clientId:String): Conversation
+  updateConversation(clientId:String): Conversation
+  createMessage(clientId:String): Message
+  updateMessage(clientId:String): Message
 }
 
 schema {

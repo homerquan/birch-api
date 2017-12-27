@@ -1,15 +1,14 @@
 import { withFilter } from "graphql-subscriptions"; // will narrow down the changes subscriptions listen to
 import { pubsub } from "./subscriptions"; // import pubsub object for subscriptions to work
 import $ from "../libs/dollar";
-
-const CONVERSATION_ADDED_TOPIC = 'conversationAdded';
+import topics from "./topics";
 
 //demo
 const timer = setInterval(() => {
   const now = (new Date()).toString();
   console.log(now);
   pubsub.publish('now', {now});
-  pubsub.publish('nowWithFilter', {nowWithFilter: now+'test to user 5821d2b0-e660-11e7-a1e8-a73d2ee333a4', client:'5821d2b0-e660-11e7-a1e8-a73d2ee333a4'});
+  pubsub.publish('nowWithFilter', {nowWithFilter: now+'test to user 5821d2b0-e660-11e7-a1e8-a73d2ee333a4', client:'ddcd39c9-dcbc-4a26-bcf7-525d77c12d54'});
 }, 1000);
 
 const resolvers = {
@@ -49,9 +48,9 @@ const resolvers = {
       // See: https://github.com/apollographql/graphql-subscriptions/issues/51
       return args;
     },
-    addMessage (obj, args, context) {
+    createMessage (obj, args, context) {
       return $['ms']
-        .act("convospot-api", "add_message", {
+        .act("convospot-api", "create_message", {
           conversation: args.conversationId,
           text: args.text
         })
@@ -59,8 +58,23 @@ const resolvers = {
   },
 
   Subscription: {
-    conversationAdded(message, variables, context, subscription) {
-       subscribe: () => pubsub.asyncIterator(CONVERSATION_ADDED_TOPIC)
+    createConversation: {
+      subscribe: withFilter(
+        () => pubsub.asyncIterator(topics['CREATE_CONVERSATION_TOPIC']),
+        (payload, args, ctx) => {
+            return Boolean(
+              args.clientId && args.clientId === payload.client
+            );
+        },
+      ),
+    },
+    updateConversation: {
+      subscribe: withFilter(
+        () => pubsub.asyncIterator(topics['UPDATE_CONVERSATION_TOPIC']),
+        (payload, args, ctx) => {
+            return true;
+        },
+      ),
     },
     now: {
       subscribe: () => pubsub.asyncIterator('now'),

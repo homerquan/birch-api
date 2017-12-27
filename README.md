@@ -16,3 +16,12 @@ query {
   }
 }
 ```
+
+```
+subscription onUpdateConversation($clientId:String) {
+  updateConversation(clientId:$clientId) {
+    id
+    status
+  } 
+}
+```
