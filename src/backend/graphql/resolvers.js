@@ -3,6 +3,13 @@ import { pubsub } from "./subscriptions"; // import pubsub object for subscripti
 import $ from "../libs/dollar";
 import topics from "./topics";
 
+//TODO: mvp only
+var redis = require("redis");
+var bluebird = require('bluebird');
+bluebird.promisifyAll(redis.RedisClient.prototype);
+var client = redis.createClient();
+
+
 //demo
 const timer = setInterval(() => {
   const now = (new Date()).toString();
@@ -37,6 +44,9 @@ const resolvers = {
           client: args.clientId
         })
     },
+    knowledge(obj, args, context) {
+      return client.hgetAsync("demo-kb","knowledge");
+    }
   },
 
   Mutation: {
@@ -56,7 +66,10 @@ const resolvers = {
           type: "language",
           text: args.text
         })
-    }  
+    },
+    updateKnowledge(obj, args, context) {
+      client.hsetAsync("demo-kb","knowledge",args.text);
+    }
   },
 
   Subscription: {

@@ -53,11 +53,13 @@ type Query {
   conversations(clientId: String, botId: String): [Conversation]
   messages(conversationId: String, clientId: String): [Message]
   bots(clientId: String): [Bot]
+  knowledge(clientId: String, botId: String): String
 }
 
 type Mutation {
   updateConversation(conversationId: String!): Conversation
   createMessage(text: String!, conversationId: String!): Message
+  updateKnowledge(text: String): String
 }
 
 type Subscription {

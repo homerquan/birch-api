@@ -11,7 +11,6 @@ const get = function(req, res, next) {
 
 const update = function(req, res, next) {
     var val = req.body.text
-    console.log("TEST"+req.body.text)
     client.hset("demo","knowledge",val);
     res.send('ok');
 };
