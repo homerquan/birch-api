@@ -16,6 +16,7 @@ query {
   }
 }
 ```
+An example with variable:
 
 ```
 subscription onUpdateConversation($clientId:String) {
@@ -23,5 +24,11 @@ subscription onUpdateConversation($clientId:String) {
     id
     status
   } 
+}
+```
+using variable:
+```
+{
+  "clientId": "ddcd39c9-dcbc-4a26-bcf7-525d77c12d54"
 }
 ```

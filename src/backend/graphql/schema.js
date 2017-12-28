@@ -1,5 +1,16 @@
 const typeDefs = `
 
+type Intention {
+  name: String
+  score: Int
+}
+
+type Action {
+  source: String
+  name: String
+  status: String
+}
+
 type Conversation {
   id: String
   visitor: String
@@ -7,6 +18,8 @@ type Conversation {
   client: String
   status: String
   mode: String
+  intentions: [Intention]
+  actions: [Action]
   token: String
   createdAt: String
   updatedAt: String
