@@ -52,6 +52,8 @@ const resolvers = {
       return $['ms']
         .act("convospot-api", "create_message", {
           conversation: args.conversationId,
+          source: "helper",
+          type: "language",
           text: args.text
         })
     }  
