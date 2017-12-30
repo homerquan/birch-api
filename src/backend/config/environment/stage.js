@@ -2,7 +2,7 @@
 * @Author: Homer
 * @Date:   2017-12-29 19:19:03
 * @Last Modified by:   Homer
-* @Last Modified time: 2017-12-29 19:58:31
+* @Last Modified time: 2017-12-30 01:56:11
 */
 'use strict';
 
@@ -20,7 +20,7 @@ module.exports = {
 		uri: 'mongodb://localhost/convospot-console-api-dev',
 	},
 
-	apiHost: 'localhost',
+	apiHost: 'api.stage.reflen.com',
 
 	apiPort: '8101',
 
