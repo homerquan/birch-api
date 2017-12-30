@@ -7,6 +7,9 @@ module.exports = {
 	// Seed database on startup
 	seedDB: true,
 
+	// Server port
+    port: process.env.PORT || 8003,
+
 	mongo: {
 		uri: 'mongodb://localhost/convospot-console-api-dev',
 	},
