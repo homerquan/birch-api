@@ -10,13 +10,13 @@ bluebird.promisifyAll(redis.RedisClient.prototype);
 var client = redis.createClient();
 
 
-//demo
-const timer = setInterval(() => {
-  const now = (new Date()).toString();
-  console.log(now);
-  pubsub.publish('now', {now});
-  pubsub.publish('nowWithFilter', {nowWithFilter: now+'test to user 5821d2b0-e660-11e7-a1e8-a73d2ee333a4', client:'ddcd39c9-dcbc-4a26-bcf7-525d77c12d54'});
-}, 1000);
+// For test
+// const timer = setInterval(() => {
+//   const now = (new Date()).toString();
+//   console.log(now);
+//   pubsub.publish('now', {now});
+//   pubsub.publish('nowWithFilter', {nowWithFilter: now+'test to user 5821d2b0-e660-11e7-a1e8-a73d2ee333a4', client:'ddcd39c9-dcbc-4a26-bcf7-525d77c12d54'});
+// }, 1000);
 
 const resolvers = {
   Query: {
