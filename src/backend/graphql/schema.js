@@ -41,6 +41,7 @@ type Message {
 type Bot {
   id: String
   name: String
+  token: String
   host: String
   client: String
   createdAt: String
@@ -59,6 +60,7 @@ type Query {
 type Mutation {
   updateConversation(conversationId: String!): Conversation
   createMessage(text: String!, conversationId: String!): Message
+  createBot(clientId: String!, name: String!, url: String!): Bot
   updateKnowledge(text: String): String
 }
 

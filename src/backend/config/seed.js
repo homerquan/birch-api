@@ -19,8 +19,20 @@ User.find({})
             {
                 _id: "ddcd39c9-dcbc-4a26-bcf7-525d77c12d54",
                 provider: "local",
+                name: "homer",
+                email: "lujooo@gmail.com",
+                password: "demo"
+            },{
+                _id: "ddcd39c9-dcbc-4a26-bcf7-525d77c12d55",
+                provider: "local",
                 name: "demo",
                 email: "lujooo@gmail.com",
+                password: "demo"
+            },{
+                _id: "ddcd39c9-dcbc-4a26-bcf7-525d77c12d56",
+                provider: "local",
+                name: "jim",
+                email: "jim@convospot.io",
                 password: "demo"
             }
         )

@@ -67,6 +67,14 @@ const resolvers = {
           text: args.text
         })
     },
+    createBot (obj, args, context) {
+      return $['ms']
+        .act("convospot-api", "create_bot", {
+          client: args.clientId,
+          name: args.name,
+          url: args.url
+        })
+    },
     updateKnowledge(obj, args, context) {
       client.hsetAsync("demo-kb","knowledge",args.text);
     }
