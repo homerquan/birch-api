@@ -26,7 +26,7 @@ User.find({})
                 _id: "ddcd39c9-dcbc-4a26-bcf7-525d77c12d55",
                 provider: "local",
                 name: "demo",
-                email: "lujooo@gmail.com",
+                email: "demo@gmail.com",
                 password: "demo"
             },{
                 _id: "ddcd39c9-dcbc-4a26-bcf7-525d77c12d56",
