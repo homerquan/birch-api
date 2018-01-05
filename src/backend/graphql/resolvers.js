@@ -88,16 +88,16 @@ const resolvers = {
             return Boolean(
               args.clientId && args.clientId === payload.client
             );
-        },
-      ),
+        }
+      )
     },
     updateConversation: {
       subscribe: withFilter(
         () => pubsub.asyncIterator(topics['UPDATE_CONVERSATION_TOPIC']),
         (payload, args, ctx) => {
             return true;
-        },
-      ),
+        }
+      )
     },
     now: {
       subscribe: () => pubsub.asyncIterator('now'),
@@ -109,8 +109,8 @@ const resolvers = {
             return Boolean(
               args.userId && args.userId === payload.client
             );
-        },
-      ),
+        }
+      )
     },
   }
 };
