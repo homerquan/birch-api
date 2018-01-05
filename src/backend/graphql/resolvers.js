@@ -76,7 +76,8 @@ const resolvers = {
         })
     },
     updateKnowledge(obj, args, context) {
-      client.hsetAsync("demo-kb","knowledge",args.text);
+      client.hsetAsync("demo-kb","knowledge",args.text. 
+.replace(/\s+/g, ' '));
     }
   },
 
