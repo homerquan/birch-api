@@ -4,10 +4,10 @@ import $ from "../libs/dollar";
 import topics from "./topics";
 
 //TODO: mvp only
-var redis = require("redis");
-var bluebird = require('bluebird');
-bluebird.promisifyAll(redis.RedisClient.prototype);
-var client = redis.createClient();
+// var redis = require("redis");
+// var bluebird = require('bluebird');
+// bluebird.promisifyAll(redis.RedisClient.prototype);
+// var client = redis.createClient();
 
 
 // For test
@@ -45,7 +45,12 @@ const resolvers = {
         })
     },
     knowledge(obj, args, context) {
-      return client.hgetAsync("demo-kb","knowledge");
+      //return client.hgetAsync("demo-kb","knowledge");
+      return $['ms']
+       .act("convospot-api", "get_knowledge", {
+          bot: args.botId,
+          client: args.clientId,
+      })
     }
   },
 
@@ -76,7 +81,13 @@ const resolvers = {
         })
     },
     updateKnowledge(obj, args, context) {
-      client.hsetAsync("demo-kb","knowledge",args.text.replace(/\s+/g, ' '));
+      //client.hsetAsync("demo-kb","knowledge",args.text.replace(/\s+/g, ' '));
+      return $['ms']
+       .act("convospot-api", "update_knowledge", {
+          raw: args.text,
+          bot: args.botId,
+          client: args.clientId,
+      })
     }
   },
 

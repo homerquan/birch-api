@@ -48,20 +48,30 @@ type Bot {
   updatedAt: String
 }
 
+type Knowledge {
+  id: String
+  raw: String
+  text: String
+  bot: String
+  client: String
+  createdAt: String
+  updatedAt: String
+}
+
 type Query {
   test: String
   now: String
   conversations(clientId: String, botId: String): [Conversation]
   messages(conversationId: String, clientId: String): [Message]
   bots(clientId: String): [Bot]
-  knowledge(clientId: String, botId: String): String
+  knowledge(clientId: String, botId: String): Knowledge
 }
 
 type Mutation {
   updateConversation(conversationId: String!): Conversation
   createMessage(text: String!, conversationId: String!): Message
   createBot(clientId: String!, name: String!, url: String!): Bot
-  updateKnowledge(text: String): String
+  updateKnowledge(clientId: String!, botId:String!, text: String!): Knowledge
 }
 
 type Subscription {
