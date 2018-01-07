@@ -14,6 +14,11 @@ module.exports = {
 		uri: 'mongodb://localhost/convospot-console-api',
 	},
 
+	grpc: {
+		conn: "localhost:8980",
+        server: "0.0.0.0:8982"
+    },
+
 	apiHost: 'localhost',
 
 	apiPort: '8001',

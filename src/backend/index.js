@@ -12,6 +12,7 @@ import $ from "./libs/dollar";
 import { init as initSocketio } from "./config/socketio";
 import { init as initExpress } from "./config/express";
 import { init as initGraphQL } from "./config/graphql";
+import { init as initGrpc } from "./config/grpc";
 import { load as loadRoutes } from "./routes";
 
 // register app with backend
@@ -37,6 +38,7 @@ const backend = (app, server) => {
 	initSocketio(socketio.of(config.socketNamespace));
 	initExpress(app);
 	initGraphQL(app,server);
+	initGrpc();
 	loadRoutes(app);
 
 	

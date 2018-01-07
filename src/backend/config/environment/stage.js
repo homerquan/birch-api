@@ -2,7 +2,7 @@
 * @Author: Homer
 * @Date:   2017-12-29 19:19:03
 * @Last Modified by:   Homer
-* @Last Modified time: 2018-01-03 22:08:30
+* @Last Modified time: 2018-01-06 23:19:54
 */
 'use strict';
 
@@ -19,6 +19,11 @@ module.exports = {
 	mongo: {
 		uri: 'mongodb://localhost/convospot-console-api',
 	},
+
+	grpc: {
+		conn: "localhost:8980",
+        server: "0.0.0.0:8982"
+    },
 
 	apiHost: 'api.stage.reflen.com',
 
