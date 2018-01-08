@@ -23,6 +23,8 @@ module.exports = {
 
 	apiPort: '8001',
 
+	graphqlSubscriptionsHost: 'localhost:' + (process.env.PORT || 8003),
+
 	logLvl: 'debug',
 
 	hashSalt: 'ilikeconvospot',

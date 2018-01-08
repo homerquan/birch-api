@@ -40,7 +40,7 @@ const init = (app, server) => {
 		graphiqlExpress({
 			endpointURL: config.graphqlPath,
 			subscriptionsEndpoint:
-				"ws://console-api.stage.reflen.com" + config.graphqlSubscriptionsPath
+				"ws://" + config.graphqlSubscriptionsHost + config.graphqlSubscriptionsPath
 		})
 	);
 

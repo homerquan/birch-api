@@ -3,26 +3,9 @@ import { pubsub } from "./subscriptions"; // import pubsub object for subscripti
 import $ from "../libs/dollar";
 import topics from "./topics";
 
-//TODO: mvp only
-// var redis = require("redis");
-// var bluebird = require('bluebird');
-// bluebird.promisifyAll(redis.RedisClient.prototype);
-// var client = redis.createClient();
-
-
-// For test
-// const timer = setInterval(() => {
-//   const now = (new Date()).toString();
-//   console.log(now);
-//   pubsub.publish('now', {now});
-//   pubsub.publish('nowWithFilter', {nowWithFilter: now+'test to user 5821d2b0-e660-11e7-a1e8-a73d2ee333a4', client:'ddcd39c9-dcbc-4a26-bcf7-525d77c12d54'});
-// }, 1000);
 
 const resolvers = {
   Query: {
-   test() {
-      return 'test ok';
-    },
     conversations(obj, args, context) {
       return $['ms']
         .act("convospot-api", "list_conversations", {
@@ -110,19 +93,19 @@ const resolvers = {
         }
       )
     },
-    now: {
+    receiveSuggestion: {
       subscribe: () => pubsub.asyncIterator('now'),
     },
-    nowWithFilter: {
+    createSuggestion: {
       subscribe: withFilter(
-        () => pubsub.asyncIterator('nowWithFilter'),
+        () => pubsub.asyncIterator(topics['RECEIVE_SUGGESTION_TOPIC']),
         (payload, args, ctx) => {
-            return Boolean(
-              args.userId && args.userId === payload.client
-            );
+          return Boolean(
+            args.conversationId && args.conversationId === payload.conversation
+          );   
         }
       )
-    },
+    }
   }
 };
 

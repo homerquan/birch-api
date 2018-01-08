@@ -2,7 +2,7 @@
 * @Author: Homer
 * @Date:   2017-12-29 19:19:03
 * @Last Modified by:   Homer
-* @Last Modified time: 2018-01-06 23:19:54
+* @Last Modified time: 2018-01-07 20:13:42
 */
 'use strict';
 
@@ -28,6 +28,8 @@ module.exports = {
 	apiHost: 'api.stage.reflen.com',
 
 	apiPort: '8101',
+
+	graphqlSubscriptionsHost: 'console-api.stage.reflen.com',
 
 	logLvl: 'debug',
 

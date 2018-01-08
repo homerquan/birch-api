@@ -58,9 +58,14 @@ type Knowledge {
   updatedAt: String
 }
 
+type Suggestion {
+  id: String
+  text: String
+  conversation: String
+  delay: Int
+}
+
 type Query {
-  test: String
-  now: String
   conversations(clientId: String, botId: String): [Conversation]
   messages(conversationId: String, clientId: String): [Message]
   bots(clientId: String): [Bot]
@@ -75,12 +80,12 @@ type Mutation {
 }
 
 type Subscription {
-  now: String
-  nowWithFilter(userId:String): String
   createConversation(clientId:String): Conversation
   updateConversation(clientId:String): Conversation
   createMessage(clientId:String): Message
   updateMessage(clientId:String): Message
+  receiveSuggestion: String
+  createSuggestion(conversationId:String): Suggestion
 }
 
 schema {
@@ -88,6 +93,7 @@ schema {
   mutation: Mutation
   subscription: Subscription
 }
+
 `;
 
 export default typeDefs;
