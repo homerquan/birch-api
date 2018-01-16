@@ -26,6 +26,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/refleninc/convospot-console-api#readme",
   "dependencies": {
+    "@slack/client": "^3.15.0",
     "@types/graphql": "^0.11.7",
     "apollo-client": "^2.0.4",
     "bluebird": "^3.5.1",
@@ -69,6 +70,7 @@
     "seneca": "3.2.0",
     "seneca-amqp-transport": "1.1.1",
     "serve-favicon": "^2.4.5",
+    "slack-node": "^0.1.8",
     "socket.io": "^2.0.4",
     "socketio-jwt": "^4.5.0",
     "subscriptions-transport-ws": "^0.9.4",
