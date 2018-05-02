@@ -3,7 +3,10 @@
 * Auth logic 
   * ref: https://github.com/srtucker22/chatty/ (server)
 
+## Mock
 
+* `graphql-faker ./console-api-mock.grqphql -p 8003`
+* Mock reference https://github.com/APIs-guru/graphql-faker/blob/master/src/fake_definition.graphql
 
 ## Test
 
