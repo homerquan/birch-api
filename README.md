@@ -7,6 +7,8 @@
 
 * `graphql-faker ./console-api-mock.grqphql -p 8003`
 * Mock reference https://github.com/APIs-guru/graphql-faker/blob/master/src/fake_definition.graphql
+* Pagination, edges, connections 
+  * https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976
 
 ## Test
 
