@@ -60,12 +60,3 @@ query {
   }
 }
 ```
-
-## Mock API
-
-* cd api_faker
-* npm install -g graphql-faker
-* npm i .
-* graphql-faker ./console-api-mock.grqphql -p 8084
-* Mock reference https://github.com/APIs-guru/graphql-faker/blob/master/src/fake_definition.graphql
-* node faker.js
