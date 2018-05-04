@@ -42,8 +42,9 @@ using variable:
 }
 ```
 
-An example of pagination
+## Mock
 
+<<<<<<< HEAD
 ```
 query {
   conversations {
@@ -61,3 +62,7 @@ query {
   }
 }
 ```
+=======
+* Install graphql-faker https://github.com/APIs-guru/graphql-faker
+* `graphql-faker ./console-api-mock.grqphql -p 8003`
+>>>>>>> 0e8dd5db30ff216f792ab4eaba2aecd28601c4d7
