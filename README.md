@@ -48,10 +48,14 @@ An example of pagination
 query {
   conversations {
     id
-    messageFeed(cursor:"xzsdfasdf"){
-      cursor
-      messages{
-        id
+     messagesConnection(first:2){
+      edges {
+        cursor
+        node {
+          id
+          source
+          text
+        }
       }
     }
   }
