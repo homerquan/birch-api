@@ -39,3 +39,19 @@ using variable:
   "clientId": "ddcd39c9-dcbc-4a26-bcf7-525d77c12d54"
 }
 ```
+
+An example of pagination
+
+```
+query {
+  conversations {
+    id
+    messageFeed(cursor:"xzsdfasdf"){
+      cursor
+      messages{
+        id
+      }
+    }
+  }
+}
+```
