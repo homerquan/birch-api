@@ -59,4 +59,22 @@ query {
     }
   }
 }
+
+query {
+ NotificationsFeed(clientId:"abc") {
+  notifications(first:1,last:10){
+    totalCount
+    edges{
+      node {
+        id
+        text
+      }
+    }
+    pageInfo{
+      hasNextPage
+      endCursor
+    }
+  }
+ }
+}
 ```
