@@ -100,18 +100,12 @@ const init = (app) => {
         //TODO: change for security later
         //app.use(cors(corsOptionsDelegate)); 
         app.use(cors());
-
-        app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
-        app.use(express.static(app.get('appPath')));
         app.use(morgan('dev'));
     }
 
     if ('development' === env) {
         console.log('Enable cors for all, for development only!');
         app.use(cors());
-    }
-
-    if ('development' === env || 'test' === env) {
         app.use(morgan('dev'));
         app.use(errorHandler()); // Error handler - has to be last
     }
