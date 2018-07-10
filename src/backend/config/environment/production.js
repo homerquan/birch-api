@@ -3,30 +3,30 @@
 // Production specific configuration
 // =================================
 module.exports = {
-  // Server IP
-  ip: process.env.OPENSHIFT_NODEJS_IP ||
-    process.env.IP ||
-    undefined,
+  // Seed database on startup
+  seedDB: true,
 
   // Server port
-  port: process.env.OPENSHIFT_NODEJS_PORT ||
-    process.env.PORT ||
-    8080,
+    port: process.env.PORT || 8803,
 
-  // MongoDB connection options
   mongo: {
-    uri: process.env.MONGODB_URI ||
-      process.env.MONGOHQ_URL ||
-      process.env.OPENSHIFT_MONGODB_DB_URL +
-      process.env.OPENSHIFT_APP_NAME ||
-      'mongodb://localhost/app'
+    uri: 'mongodb://localhost/convospot-console-api',
   },
 
-  logLvl: 'error',
+  grpc: {
+    conn: "localhost:8980",
+        server: "0.0.0.0:8982"
+    },
 
-  hashSalt: '4+GuD3~F9&Lt}S=.',
+  apiHost: 'api.reflen.com',
 
-  coresWhitelist: ['http://app.convospot.io', 'http://widget.convospot.io'],
+  apiPort: '8801',
 
-  postmarkToken: 'eae44408-39d1-44aa-a31b-59eb15d7da3e'
+  graphqlSubscriptionsHost: 'console-api.reflen.com',
+
+  logLvl: 'debug',
+
+  hashSalt: 'ilikeconvospot',
+
+  amqpConn: 'amqp://guest:guest@localhost:5672/seneca',
 };
