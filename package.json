@@ -1,14 +1,19 @@
 {
-  "name": "convospot-console-api",
+  "name": "birch-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "convospot console api",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
+  "author": {
+    "name": "Homer Quan",
+    "email": "dev@reflen.com",
+    "url": "https://www.reflen.com"
+  },
   "engines": {
-    "node": ">=6.5",
-    "npm": ">=3.10"
+    "node": ">=8.10",
+    "npm": ">=6.4"
   },
   "scripts": {
     "prestart": "if [ ! -d node_modules ]; then npm install; fi",
@@ -18,13 +23,6 @@
     "inspect": "babel-node --inspect --debug-brk src/server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@bitbucket.org/refleninc/convospot-console-api.git"
-  },
-  "author": "Homer Quan",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/refleninc/convospot-console-api#readme",
   "dependencies": {
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",

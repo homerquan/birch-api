@@ -11,6 +11,8 @@
   * https://dev-blog.apollodata.com/explaining-graphql-connections-c48b7c3d6976
 
 ## Test
+Using REPL of graphQL
+https://github.com/graphql-cli/graphql-cli
 
 Using /graphiql
 
