@@ -19,8 +19,8 @@ import PrettyError from "pretty-error";
 import config from "./config";
 import backendServer from "./backend";
 import welcome from "./libs/welcome";
+import $ from './libs/dollar';
 
-const colors = require('colors');
 const app = express();
 const server = http.createServer(app);
 
@@ -43,5 +43,5 @@ backendServer(app, server);
 // -----------------------------------------------------------------------------
 server.listen(config.port, config.ip, () => {
   welcome();
-  console.info(`The server is running at http://${config.ip}:${config.port}/`.green);
+  $['log'].info(`The server is running at http://${config.ip}:${config.port}/`);
 });
