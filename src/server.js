@@ -27,8 +27,6 @@ const server = http.createServer(app);
 //
 // Register Node.js middleware
 // -----------------------------------------------------------------------------
-app.use(express.static(path.join(__dirname, "public")));
-app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -45,5 +43,5 @@ backendServer(app, server);
 // -----------------------------------------------------------------------------
 server.listen(config.port, config.ip, () => {
   welcome();
-  console.info(`The server is running at http://localhost:${config.port}/`.green);
+  console.info(`The server is running at http://${config.ip}:${config.port}/`.green);
 });
