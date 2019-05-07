@@ -16,9 +16,9 @@ import expressJwt, { UnauthorizedError as Jwt401Error } from "express-jwt";
 import expressGraphQL from "express-graphql";
 import jwt from "jsonwebtoken";
 import PrettyError from "pretty-error";
-import config from "./backend/config";
+import config from "./config";
 import backendServer from "./backend";
-import welcome from "./backend/libs/welcome";
+import welcome from "./libs/welcome";
 
 const colors = require('colors');
 const app = express();
