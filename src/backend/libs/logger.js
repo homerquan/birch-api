@@ -2,14 +2,17 @@ import config from '../config/environment';
 import winston from 'winston';
 
 //Use customer logger later
-var Logger = new(winston.Logger)({
-	level: config.logLvl,
+let logger = winston.createLogger({
+	level: config.LOG_LEVEL || "info",
 	transports: [
-		new(winston.transports.Console)({
-			colorize: true,
-			timestamp: true
+		new winston.transports.Console({
+			format: winston.format.combine(
+				winston.format.timestamp(),
+				winston.format.colorize(),
+				winston.format.simple()
+			)
 		})
 	]
 });
 
-export default Logger;
+export default logger;
