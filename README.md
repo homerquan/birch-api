@@ -80,3 +80,8 @@ query {
  }
 }
 ```
+
+## Test 
+
+prisma-admin localhost:8003
+
