@@ -11,13 +11,13 @@ import socketioJwt from 'socketio-jwt';
 
 // When the user disconnects.. perform this
 const onDisconnect = (socket) => {
-    require('../sockets/app.socketio.logic').disconnect(socket);
+    require('../socket/app.socketio.logic').disconnect(socket);
 }
 
 // When the user connects.. perform this
 const onConnect = (socket) => {
     // Insert sockets below
-    require('../sockets/app.socketio.logic').connect(socket);    
+    require('../socket/app.socketio.logic').connect(socket);    
 }
 
 const init = (socketio) => {

@@ -28,6 +28,9 @@ const init = (app) => {
     app.use(bodyParser.json());
     app.use(methodOverride());
 
+    app.engine('html', require('ejs').renderFile);
+    app.set('view engine', 'html');
+
     if ('production' === env) {
 
         // allow cors in api (this have to put before multer)
