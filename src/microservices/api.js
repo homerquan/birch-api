@@ -1,3 +1,5 @@
+// Microservice to the business bus
+
 import { pubsub } from "../graphql/subscriptions";
 import topics from "../graphql/topics"
 

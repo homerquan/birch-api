@@ -13,6 +13,8 @@ module.exports = {
 
   // GraphQL
   graphqlPath: '/graphql',
+
+  graphqlDevPath: '/playground',
   
   graphqlSubscriptionsPath: '/graphql-subscriptions',
 

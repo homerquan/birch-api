@@ -1,24 +1,28 @@
 import expressGraphQL from "express-graphql";
-import { graphiqlExpress } from "graphql-server-express";
+import expressPlayground from "graphql-playground-middleware-express";
 import bodyParser from "body-parser";
 import { PubSub } from "graphql-subscriptions";
 import { SubscriptionServer } from "subscriptions-transport-ws";
 import { execute, subscribe } from "graphql";
 import { makeExecutableSchema } from "graphql-tools";
-import resolvers from "../graphql/resolvers";
-import typeDefs from "../graphql/schema";
-import jwt from 'jsonwebtoken';
-import config from './environment';
+// import resolvers from '../graphql/resolvers';
+// import typeDefs from '../graphql/schema';
+import jwt from "jsonwebtoken";
+import config from "./environment";
+import schema from '../graphql/schema';
 
 const colors = require("colors");
 
 const init = (app, server) => {
 	//Setup GRAPHQL
 	// make schema executable
-	const schema = makeExecutableSchema({
-		typeDefs,
-		resolvers
-	});
+	// const schema = makeExecutableSchema({
+	// 	typeDefs,
+	// 	resolvers
+	// });
+	//
+	
+	console.dir(schema);
 
 	// any additional context you use for your resolvers, if any
 	const context = {};
@@ -27,21 +31,31 @@ const init = (app, server) => {
 	const graphqlMiddleware = expressGraphQL(req => ({
 		schema,
 		rootValue: { request: req },
-		subscriptionsEndpoint: config.graphqlSubscriptionsPath
+		//subscriptionsEndpoint: config.graphqlSubscriptionsPath
 	}));
 
 	app.use(config.graphqlPath, graphqlMiddleware);
-	console.log(`GraphQL Server is now running on ${config.graphqlPath}`.green);
+
+	console.log(
+		`GraphQL Server is now running on ${config.graphqlPath}`.yellow
+	);
 
 	// Add graphiql dev console
 	app.use(
-		"/graphiql",
+		config.graphqlDevPath,
 		bodyParser.json(),
-		graphiqlExpress({
-			endpointURL: config.graphqlPath,
-			subscriptionsEndpoint:
-				"ws://" + config.graphqlSubscriptionsHost + config.graphqlSubscriptionsPath
+		expressPlayground({
+			endpoint: config.graphqlPath,
+			// subscriptionEndpoint:
+			// 	"ws://" +
+			// 	config.graphqlSubscriptionsHost +
+			// 	config.graphqlSubscriptionsPath
 		})
+	);
+
+	console.log(
+		`GraphQL Interactive Console is now running on ${config.graphqlDevPath}`
+			.red
 	);
 
 	// GraphQL subscription
@@ -57,6 +71,7 @@ const init = (app, server) => {
 			path: config.graphqlSubscriptionsPath
 		}
 	);
+
 	console.log(
 		`GraphQL Subscriptions are now running on ${
 			config.graphqlSubscriptionsPath

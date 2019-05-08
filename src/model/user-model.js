@@ -1,11 +1,10 @@
 'use strict';
 
 import crypto from 'crypto';
-import $ from '../../libs/dollar';
-import util from '../../libs/util';
+import $ from '../libs/dollar';
+import util from '../libs/util';
 
-const authTypes = ['facebook', 'google'];
-const EVENTS = require('../../var/events.json');
+const authTypes = ['google'];
 
 var schema = {
     _id: {
@@ -34,7 +33,6 @@ var schema = {
         type: Boolean,
         default: false
     },
-    facebook: {},
     google: {}
 };
 
@@ -189,7 +187,7 @@ UserSchema
     .post('save', function(doc, next) {
         if (this.wasNew) {
             //send welcome email and verify email
-            //cep.pub(EVENTS.WELCOME, doc);
+            // send $['var'].events.NEW_USER
         }
         next();
     });

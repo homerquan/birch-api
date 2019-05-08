@@ -1,9 +1,9 @@
 import timestamps from 'mongoose-timestamp';
-import verGen from '../../libs/verification.generator';
-import $ from '../../libs/dollar';
-import util from '../../libs/util';
+import verGen from '../libs/verification.generator';
+import $ from '../libs/dollar';
+import util from '../libs/util';
 
-var User = require('../user/user.model');
+var User = require('./user-model');
 
 var schema = {
 	id: {

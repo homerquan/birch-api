@@ -81,7 +81,16 @@ query {
 }
 ```
 
+## Code generator
+
+https://github.com/graphql-compose/graphql-compose-mongoose
+https://graphql-code-generator.com/
+
 ## Test 
 
 prisma-admin localhost:8003
+
+## Permission
+
+graphql-shield
 

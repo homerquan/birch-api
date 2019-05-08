@@ -1,8 +1,8 @@
 import timestamps from 'mongoose-timestamp';
-import hashids from '../../libs/hashids';
-import $ from '../../libs/dollar';
-import util from '../../libs/util';
-import validator from '../../libs/validator';
+import hashids from '../libs/hashids';
+import $ from '../libs/dollar';
+import util from '../libs/util';
+import validator from '../libs/validator';
 
 var schema = {
     _id: {
