@@ -4,9 +4,9 @@
  */
 
 "use strict";
-import App from "../api/app/app.model";
-import User from "../api/user/user.model";
-import Verification from "../api/verification/verification.model";
+import App from "../model/app/app.model";
+import User from "../model/user/user.model";
+import Verification from "../model/verification/verification.model";
 
 const colors = require("colors");
 

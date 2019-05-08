@@ -10,7 +10,6 @@ import http from "http";
 import https from "https"; //use https in producation
 import Promise from "bluebird";
 import express from "express";
-import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import expressJwt, { UnauthorizedError as Jwt401Error } from "express-jwt";
 import expressGraphQL from "express-graphql";

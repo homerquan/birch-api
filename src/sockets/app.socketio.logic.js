@@ -4,7 +4,7 @@
 'use strict';
 import $ from '../libs/dollar';
 import _ from 'lodash';
-import User from '../api/user/user.model';
+import User from '../model/user/user.model';
 
 function handleEntityNotFound(socket, log = 'entity does not exist') {
     return function(entity) {
