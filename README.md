@@ -143,12 +143,12 @@ query{
 
 ## Code generator
 
-https://github.com/graphql-compose/graphql-compose-mongoose
-https://graphql-code-generator.com/
+* https://github.com/graphql-compose/graphql-compose
+* https://github.com/graphql-compose/graphql-compose-mongoose
 
 ## Test 
 
-prisma-admin localhost:8003
+http://localhost:8003/playground
 
 ## Permission
 
