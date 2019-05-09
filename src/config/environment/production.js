@@ -31,5 +31,5 @@ module.exports = {
 
   hashSalt:
     "uiMOrtjSHOPzjATFn63teax1l9Q8jV/yOgiXTndQtQcm1cSxSx7rCrHHFdKtl9SE QmGG7V9OjX20B53b/92JUZW1CbD0qhqnwRRs7neDtvBF56xhnafsNutg3dAzTnUf FNi28YxaFWbH40ilXDS7eCkQOXdpuxB3YNTnXLFY/d0=",
-  amqpConn: "amqp://user:nfbgFnYXt9bF@rabbitmq.internal.rl.business:5672/seneca"
+  amqpConn: "amqp://user:nfbgFnYXt9bF@rabbitmq.internal.rl.business:5672"
 };
