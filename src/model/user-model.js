@@ -12,6 +12,8 @@ var schema = {
         default: util.genUuid
     },
     name: String,
+    firstname: String,
+    lastname: String,
     email: {
         type: String,
         lowercase: true

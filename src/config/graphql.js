@@ -14,19 +14,7 @@ import schema from '../graphql/schema';
 const colors = require("colors");
 
 const init = (app, server) => {
-	//Setup GRAPHQL
-	// make schema executable
-	// const schema = makeExecutableSchema({
-	// 	typeDefs,
-	// 	resolvers
-	// });
-	//
 	
-	console.dir(schema);
-
-	// any additional context you use for your resolvers, if any
-	const context = {};
-
 	// Register API middleware
 	const graphqlMiddleware = expressGraphQL(req => ({
 		schema,

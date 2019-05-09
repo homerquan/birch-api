@@ -26,5 +26,7 @@ schemaComposer.Mutation.addFields({
   userRemoveMany: UserTC.getResolver('removeMany'),
 });
 
+// add subscription here
+
 const graphqlSchema = schemaComposer.buildSchema();
 export default graphqlSchema;
