@@ -11,7 +11,7 @@ module.exports = {
 
   mongo: {
     uri:
-      "mongodb://reflen-admin:FhiRqAkF9JuVAjvBDzbNFX0W9o0=@mongodb-0.internal.rl.business:27017,mongodb-1.internal.rl.business:27017,mongodb-2.internal.rl.business/reflen-console?replicaSet=rs0"
+      "mongodb://reflen-admin:FhiRqAkF9JuVAjvBDzbNFX0W9o0@mongodb-0.internal.rl.business:27017,mongodb-1.internal.rl.business:27017,mongodb-2.internal.rl.business/reflen-console?replicaSet=rs0"
   },
 
   grpc: {
