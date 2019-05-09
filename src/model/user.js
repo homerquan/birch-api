@@ -25,7 +25,7 @@ var schema = {
     },
     status: {
         type: String,
-        default: 'off',
+        default: 'offline',
         enum: ['online', 'offline']
     },
     password: String,
