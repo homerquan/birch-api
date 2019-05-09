@@ -1,0 +1,12 @@
+runtime: nodejs
+env: flex
+
+# what follows will be optional in the future:
+service: console-api
+env_variables:
+  NODE_ENV: 'production'
+handlers:
+- url: /.*
+  script: auto
+  secure: always
+  redirect_http_response_code: 301
