@@ -81,6 +81,47 @@ query {
 }
 ```
 
+```
+mutation {
+  userCreate(record: {
+    name: "My Name",
+    age: 24,
+    gender: ladyboy,
+    contacts: {
+      email: "mail@example.com",
+      phones: [
+        "111-222-333-444",
+        "444-555-666-777"
+      ]
+    },
+    languages: [{
+      language: "english",
+      skill: basic
+    }],
+    someMixed: {
+      a: 1,
+      b: 2,
+      c: [ 1, 2, 3, true, false, { sub: 1 }]
+    }
+  }) {
+    recordId
+    record {
+      name
+      age
+      gender
+      languages {
+        language
+      }
+      contacts {
+        email
+        phones
+      }
+      someMixed
+    }
+  }
+}
+```
+
 ## Code generator
 
 https://github.com/graphql-compose/graphql-compose-mongoose
