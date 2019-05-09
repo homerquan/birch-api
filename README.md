@@ -122,6 +122,25 @@ mutation {
 }
 ```
 
+```
+query{
+  userPagination(filter: { status: online }, perPage: 2, page: 2, sort: _ID_ASC) {
+    items {
+      name
+    }
+    count
+    pageInfo {
+      currentPage
+      perPage
+      itemCount
+      pageCount
+      hasPreviousPage
+      hasNextPage
+    }
+  }
+}
+```
+
 ## Code generator
 
 https://github.com/graphql-compose/graphql-compose-mongoose

@@ -12,8 +12,8 @@ module.exports = {
   ip: process.env.IP || '0.0.0.0',
 
   // GraphQL
+  graphqlProtocol: 'ws://',
   graphqlPath: '/graphql',
-
   graphqlDevPath: '/playground',
   
   graphqlSubscriptionsPath: '/graphql-subscriptions',

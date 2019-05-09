@@ -8,10 +8,8 @@ import { makeExecutableSchema } from "graphql-tools";
 // import resolvers from '../graphql/resolvers';
 // import typeDefs from '../graphql/schema';
 import jwt from "jsonwebtoken";
-import config from "./environment";
 import schema from '../graphql/schema';
-
-const colors = require("colors");
+import $ from '../libs/dollar';
 
 const init = (app, server) => {
 	
@@ -19,31 +17,30 @@ const init = (app, server) => {
 	const graphqlMiddleware = expressGraphQL(req => ({
 		schema,
 		rootValue: { request: req },
-		//subscriptionsEndpoint: config.graphqlSubscriptionsPath
+		subscriptionsEndpoint: $['config'].graphqlSubscriptionsPath
 	}));
 
-	app.use(config.graphqlPath, graphqlMiddleware);
+	app.use($['config'].graphqlPath, graphqlMiddleware);
 
-	console.log(
-		`GraphQL Server is now running on ${config.graphqlPath}`.yellow
+	$['log'].info(
+		`GraphQL Server is now running on ${$['config'].graphqlPath}`
 	);
 
 	// Add graphiql dev console
 	app.use(
-		config.graphqlDevPath,
+		$['config'].graphqlDevPath,
 		bodyParser.json(),
 		expressPlayground({
-			endpoint: config.graphqlPath,
-			// subscriptionEndpoint:
-			// 	"ws://" +
-			// 	config.graphqlSubscriptionsHost +
-			// 	config.graphqlSubscriptionsPath
+			endpoint: $['config'].graphqlPath,
+			subscriptionEndpoint:
+				$['config'].graphqlProtocol +
+				$['config'].graphqlSubscriptionsHost +
+				$['config'].graphqlSubscriptionsPath
 		})
 	);
 
-	console.log(
-		`GraphQL Interactive Console is now running on ${config.graphqlDevPath}`
-			.red
+	$['log'].info(
+		`GraphQL Interactive Console is now running on ${$['config'].graphqlDevPath}`
 	);
 
 	// GraphQL subscription
@@ -56,14 +53,12 @@ const init = (app, server) => {
 		},
 		{
 			server: server,
-			path: config.graphqlSubscriptionsPath
+			path: $['config'].graphqlSubscriptionsPath
 		}
 	);
 
-	console.log(
-		`GraphQL Subscriptions are now running on ${
-			config.graphqlSubscriptionsPath
-		}`.green
+	$['log'].info(
+		`GraphQL Subscriptions are now running on ${$['config'].graphqlSubscriptionsPath}`
 	);
 };
 

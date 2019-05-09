@@ -18,11 +18,13 @@ module.exports = {
         server: "0.0.0.0:8982"
     },
 
-  apiHost: 'api.reflen.com',
+  apiHost: 'api.rl.business',
 
   apiPort: '8801',
 
-  graphqlSubscriptionsHost: 'console-api.reflen.com',
+  graphqlProtocol: 'wss://',
+
+  graphqlSubscriptionsHost: 'console-api.rl.business',
 
   logLvl: 'debug',
 
