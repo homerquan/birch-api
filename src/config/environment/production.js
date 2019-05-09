@@ -7,20 +7,20 @@ module.exports = {
   seedDB: true,
 
   // Server port
-    port: process.env.PORT || 8803,
+    port: process.env.PORT || 8080,
 
   mongo: {
-    uri: 'mongodb://localhost/convospot-console-api',
+    uri: 'mongodb://reflen-admin:FhiRqAkF9JuVAjvBDzbNFX0W9o0=@mongodb-0.internal.rl.business:27017,mongodb-1.internal.rl.business:27017,mongodb-2.internal.rl.business/reflen-console?replicaSet=rs0',
   },
 
   grpc: {
-    conn: "localhost:8980",
-        server: "0.0.0.0:8982"
+    conn: 'localhost:8980',
+        server: '0.0.0.0:8982'
     },
 
   apiHost: 'api.rl.business',
 
-  apiPort: '8801',
+  apiPort: '8080',
 
   graphqlProtocol: 'wss://',
 
@@ -28,7 +28,6 @@ module.exports = {
 
   logLvl: 'debug',
 
-  hashSalt: 'ilikeconvospot',
-
+  hashSalt: 'uiMOrtjSHOPzjATFn63teax1l9Q8jV/yOgiXTndQtQcm1cSxSx7rCrHHFdKtl9SE QmGG7V9OjX20B53b/92JUZW1CbD0qhqnwRRs7neDtvBF56xhnafsNutg3dAzTnUf FNi28YxaFWbH40ilXDS7eCkQOXdpuxB3YNTnXLFY/d0=',
   amqpConn: 'amqp://guest:guest@localhost:5672/seneca',
 };

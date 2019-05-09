@@ -11,7 +11,7 @@ module.exports = {
     port: process.env.PORT || 8003,
 
 	mongo: {
-		uri: 'mongodb://localhost/reflen-console-api',
+		uri: 'mongodb://localhost/reflen-console',
 	},
 
 	grpc: {

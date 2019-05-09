@@ -12,8 +12,8 @@
     "url": "https://www.reflen.com"
   },
   "engines": {
-    "node": ">=10",
-    "npm": ">=6.4"
+    "node": "10.x",
+    "npm": "6.x"
   },
   "scripts": {
     "prestart": "if [ ! -d node_modules ]; then npm install; fi",
