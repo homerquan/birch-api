@@ -40,14 +40,14 @@ const schema = {
 const UserSchema = new $.mg.Schema(schema, {
   toObject: {
     virtuals: true,
-    transform(doc, ret, options) {
-      delete ret.password; // always remove sensitive info
+    transform(doc, obj, options) {
+      delete obj.password; // always remove sensitive info
     },
   },
   toJSON: {
     virtuals: true,
-    transform(doc, ret, options) {
-      delete ret.password;
+    transform(doc, obj, options) {
+      delete obj.password;
     },
   },
 });

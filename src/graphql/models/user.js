@@ -3,6 +3,7 @@
 import { composeWithMongoose } from '../schemaComposer';
 import User from '../../models/user';
 import { NotificationTC } from "./notification";
+import { AppTC } from "./app";
 
 export const UserTC = composeWithMongoose(User);
 
@@ -22,6 +23,14 @@ UserTC.addFields({
 
 UserTC.addRelation('notificationConnection', {
   resolver: () => NotificationTC.getResolver('connection'),
+  prepareArgs: {
+    filter: source => ({ _owner: source.id }),
+  },
+  projection: { _owner: true },
+});
+
+UserTC.addRelation('appConnection', {
+  resolver: () => AppTC.getResolver('connection'),
   prepareArgs: {
     filter: source => ({ _owner: source.id }),
   },
