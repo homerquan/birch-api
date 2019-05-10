@@ -1,10 +1,10 @@
 import errors from '../var/errors.json';
 
-const httpError = (reason) => {
+const httpError = reason => {
   return (req, res) => {
-    var viewFilePath = reason || 'GENERAL';
-    var statusCode = errors[reason].code;
-    var result = errors[reason]||errors.GENERAL; 
+    const viewFilePath = reason || 'GENERAL';
+    const statusCode = errors[reason].code;
+    const result = errors[reason] || errors.GENERAL;
     res.status(result.code);
     res.render(viewFilePath, {}, function(err, html) {
       if (err) {
@@ -13,7 +13,6 @@ const httpError = (reason) => {
       res.send(html);
     });
   };
-}
+};
 
-
-export default httpError
+export default httpError;

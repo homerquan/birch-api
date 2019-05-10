@@ -1,8 +1,8 @@
 /* @flow */
 
-import { Schema, model, type ObjectId } from 'mongoose';
 import { composeWithMongoose } from '../schemaComposer';
-import User from '../../model/user';
+import User from '../../models/user';
+import { NotificationTC } from "./notification";
 
 export const UserTC = composeWithMongoose(User);
 
@@ -18,4 +18,12 @@ UserTC.addFields({
       return source.firstname+' '+source.lastname;
     },
   },
+});
+
+UserTC.addRelation('notificationConnection', {
+  resolver: () => NotificationTC.getResolver('connection'),
+  prepareArgs: {
+    filter: source => ({ _owner: source.id }),
+  },
+  projection: { _owner: true },
 });

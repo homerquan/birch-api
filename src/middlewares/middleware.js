@@ -1,6 +1,6 @@
-var $ = require('./dollar').$,
-	_ = require('lodash');
-	//rateLimit = require('./rateLimit');
+const { $ } = require('./dollar');
+const _ = require('lodash');
+// rateLimit = require('./rateLimit');
 
 /*
  * Customer middleware
@@ -8,14 +8,14 @@ var $ = require('./dollar').$,
  * 2. check oauth permission and scope by external settings
  * 3. content type negotiation
  */
-var logUsage = function(req, res, next) {
-	$('logger').info('%s %s %s', Date.now(), req.method, req.url);
-	next();
+const logUsage = function(req, res, next) {
+  $('log').info('%s %s %s', Date.now(), req.method, req.url);
+  next();
 };
 
 // for test
-var doNothing = function(req, res, next) {
-	next();
+const doNothing = function(req, res, next) {
+  next();
 };
 
 /**
@@ -24,20 +24,24 @@ var doNothing = function(req, res, next) {
 // var rateLimit = function(req, res, next) {
 // 	var setting = checkConfig($('config').RATE_LIMIT[req.method], req.path) || null;
 // 	if (setting) {
+// 	
+// 	
+// 	
+// 	
 // 		rateLimit(req, res, setting, next);
 // 	} else {
 // 		next();
 // 	}
 // };
 
-/* 
+/*
  * Check the Content-Type for security reason
  * Default is json, decline other types and response error in html
  * allow multipart/form-data for upload only
  */
 // var contentTypeNegotiation = function(req, res, next) {
 // 	if (req.header('content-type') && req.url.lastIndexOf('/admin?action=upload_schedule_file', 0) === 0) {
-// 		next();	
+// 		next();
 // 	} else if (req.header('content-type') && req.url.lastIndexOf('/image', 0) === 0 && req.header('content-type').lastIndexOf('application/x-www-form-urlencoded', 0) === 0) {
 // 		next();
 // 	} else if (req.header('content-type') && req.header('content-type').indexOf('application/json') === -1) {
@@ -61,7 +65,6 @@ var doNothing = function(req, res, next) {
 // 		return result;
 // 	});
 // };
-
 
 // /**
 //  * Check shared query
@@ -132,4 +135,4 @@ var doNothing = function(req, res, next) {
 // 	middleware = [logUsage, checkOauth, getClient, contentTypeNegotiation, checkQuery, haltOnTimedout]
 // }
 
-//module.exports = middleware;
+// module.exports = middleware;

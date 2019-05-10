@@ -1,7 +1,7 @@
 /**
  * Validator for req
  */
-var expressValidator = require('express-validator');
+var expressValidator = require("express-validator");
 
 var customValidators = {
 	isArray: function(value) {

@@ -2,11 +2,10 @@
  *
  * Global object for singleton pattern
  *
- **/
+ * */
 
-
-import logger from './logger';
 import Promise from 'bluebird';
+import logger from './logger';
 
 const ms = require('./seneca');
 const mongoose = Promise.promisifyAll(require('mongoose'));
