@@ -1,6 +1,5 @@
 import crypto from 'crypto';
 import $ from '../libs/dollar';
-import util from '../libs/util';
 
 const authTypes = ['google'];
 
@@ -90,51 +89,6 @@ UserSchema.virtual('token').get(function() {
 UserSchema.virtual('_client').get(function() {
   return this._id;
 });
-
-/**
- * Validations
- */
-
-// Validate empty email
-UserSchema.path('email').validate(function(email) {
-  if (authTypes.indexOf(this.provider) !== -1) {
-    return true;
-  }
-  return email.length;
-}, 'Email cannot be blank');
-
-// Validate empty password
-UserSchema.path('password').validate(function(password) {
-  if (authTypes.indexOf(this.provider) !== -1) {
-    return true;
-  }
-  return password.length;
-}, 'Password cannot be blank');
-
-// Validate email is not taken
-UserSchema.path('email').validate(function(value) {
-  const self = this;
-  return this.constructor
-    .findOneAsync({
-      email: value,
-    })
-    .then(function(user) {
-      if (user) {
-        if (self.id === user.id) {
-          return true;
-        }
-        return false;
-      }
-      return true;
-    })
-    .catch(function(err) {
-      throw err;
-    });
-}, 'The specified email address is already in use.');
-
-const validatePresenceOf = function(value) {
-  return value && value.length;
-};
 
 /**
  * Pre-save hook

@@ -1,7 +1,6 @@
 import timestamps from 'mongoose-timestamp';
 import hashids from '../libs/hashids';
 import $ from '../libs/dollar';
-import validator from '../libs/validator';
 
 const schema = {
   name: {
@@ -20,10 +19,7 @@ const schema = {
     type: String,
     required: true,
   },
-  category: Number,
-  personality: Object,
-  settings: Object,
-  active: {
+  disabled: {
     type: Boolean,
     default: true,
   },

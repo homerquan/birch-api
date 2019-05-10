@@ -2,13 +2,11 @@
  * @Author: homer
  * @Date:   2019-05-09 12:06:54
  * @Last Modified by:   homer
- * @Last Modified time: 2019-05-09 22:25:02
+ * @Last Modified time: 2019-05-09 23:07:18
  */
 
 import timestamps from 'mongoose-timestamp';
-import verGen from '../libs/verification.generator';
 import $ from '../libs/dollar';
-import util from '../libs/util';
 
 const schema = {
   text: {
