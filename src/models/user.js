@@ -36,7 +36,7 @@ const schema = {
   google: {},
 };
 
-const UserSchema = new $.mg.Schema(schema, {
+const UserSchema = new $['mg'].Schema(schema, {
   toObject: {
     virtuals: true,
     transform(doc, obj, options) {
@@ -211,8 +211,8 @@ UserSchema.methods = {
       return null;
     }
 
-    const defaultIterations = 10000;
-    const defaultKeyLength = 64;
+    const defaultIterations = $['config'].passwordIterations;
+    const defaultKeyLength = $['config'].passwordKeyLength;
     const salt = new Buffer(this.salt, 'base64');
 
     if (!callback) {
@@ -233,4 +233,4 @@ UserSchema.methods = {
   },
 };
 
-export default $.mg.model('User', UserSchema);
+export default $['mg'].model('User', UserSchema);

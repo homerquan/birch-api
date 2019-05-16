@@ -4,20 +4,15 @@ const path = require('path');
 module.exports = {
 
   env: process.env.NODE_ENV,
-
 	// Root path of server
   root: path.normalize(`${__dirname}/../../..`),
-
 	// Server IP
   ip: process.env.IP || '0.0.0.0',
-
   // GraphQL
   graphqlProtocol: 'ws://',
   graphqlPath: '/graphql',
-  graphqlDevPath: '/playground',
-  
+  graphqlDevPath: '/playground',  
   graphqlSubscriptionsPath: '/graphql-subscriptions',
-
   // Seneca microservcies
   amqpConn:  'amqp://guest:guest@localhost:5672/seneca',
 
@@ -28,6 +23,9 @@ module.exports = {
   secrets: {
     session: process.env.JWT_SECRETS || '08f1af67cddd127b6f2122ce7a05cf5ef171c199a350687d3c8d8ed62b03642c'
   },
+
+  passwordIterations:10000,
+  passwordKeyLength:64,
 
 	// MongoDB connection options
   mongo: {

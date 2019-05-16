@@ -29,7 +29,7 @@ const schema = {
   },
 };
 
-const Schema = new $.mg.Schema(schema, {
+const Schema = new  $['mg'].Schema(schema, {
   toObject: {
     virtuals: true,
   },
@@ -57,4 +57,4 @@ Schema.static('findByTokenAsync', function(token) {
   });
 });
 
-export default $.mg.model('App', Schema);
+export default  $['mg'].model('App', Schema);
