@@ -1,8 +1,6 @@
 import crypto from 'crypto';
 import $ from '../libs/dollar';
 
-const authTypes = ['google'];
-
 const schema = {
   username: {
     type: String,
@@ -32,11 +30,10 @@ const schema = {
   verified: {
     type: Boolean,
     default: false,
-  },
-  google: {},
+  }
 };
 
-const UserSchema = new $['mg'].Schema(schema, {
+const Schema = new $['mg'].Schema(schema, {
   toObject: {
     virtuals: true,
     transform(doc, obj, options) {
@@ -51,13 +48,13 @@ const UserSchema = new $['mg'].Schema(schema, {
   },
 });
 
-UserSchema.static('findByEmail', function(email) {
+Schema.static('findByEmail', function(email) {
   return this.findOneAsync({
     email,
   });
 });
 
-UserSchema.static('setVerification', function(id) {
+Schema.static('setVerification', function(id) {
   return this.findByIdAndUpdateAsync(id, {
     $set: {
       verified: true,
@@ -66,39 +63,14 @@ UserSchema.static('setVerification', function(id) {
 });
 
 /**
- * Virtuals
- */
-
-// Public profile information
-UserSchema.virtual('profile').get(function() {
-  return {
-    name: this.name,
-    role: this.role,
-  };
-});
-
-// Non-sensitive info we'll be putting in the token
-UserSchema.virtual('token').get(function() {
-  return {
-    _id: this._id,
-    role: this.role,
-  };
-});
-
-// TODO, one user per client, change later
-UserSchema.virtual('_client').get(function() {
-  return this._id;
-});
-
-/**
  * Pre-save hook
  */
-UserSchema.pre('save', function(next) {
+Schema.pre('save', function(next) {
   // preserve isNew for post
   this.wasNew = this.isNew;
   // Handle new/update passwords
   if (this.isModified('password')) {
-    if (!validatePresenceOf(this.password) && authTypes.indexOf(this.provider) === -1) {
+    if (!validatePassword(this.password)) {
       next(new Error('Invalid password'));
     }
 
@@ -125,7 +97,7 @@ UserSchema.pre('save', function(next) {
 /**
  * Post-save hook to send verify email
  */
-UserSchema.post('save', function(doc, next) {
+Schema.post('save', function(doc, next) {
   if (this.wasNew) {
     // send welcome email and verify email
     // send $['var'].events.NEW_USER
@@ -136,7 +108,7 @@ UserSchema.post('save', function(doc, next) {
 /**
  * Methods
  */
-UserSchema.methods = {
+Schema.methods = {
   /**
    * Authenticate - check if the passwords are the same
    *
@@ -233,4 +205,4 @@ UserSchema.methods = {
   },
 };
 
-export default $['mg'].model('User', UserSchema);
+export default $['mg'].model('User', Schema);

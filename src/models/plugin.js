@@ -2,7 +2,7 @@
  * @Author: homer
  * @Date:   2019-05-09 12:07:30
  * @Last Modified by:   homer
- * @Last Modified time: 2019-05-16 12:18:48
+ * @Last Modified time: 2019-05-16 17:54:45
  */
 
 import timestamps from 'mongoose-timestamp';
@@ -20,11 +20,7 @@ const schema = {
   },
   data: {
     type: Object,
-  },
-  _owner: {
-    type: String,
-    index: true,
-  },
+  }
 };
 
 const Schema = new $['mg'].Schema(schema, {

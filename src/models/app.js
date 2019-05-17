@@ -29,7 +29,7 @@ const schema = {
   },
 };
 
-const Schema = new  $['mg'].Schema(schema, {
+const Schema = new $['mg'].Schema(schema, {
   toObject: {
     virtuals: true,
   },
@@ -40,21 +40,4 @@ const Schema = new  $['mg'].Schema(schema, {
 
 Schema.plugin(timestamps);
 
-Schema.virtual('token').get(function() {
-  return hashids.encode(parseInt(this.sid));
-});
-
-Schema.static('findByShortIdAsync', function(sid) {
-  return this.findOneAsync({
-    sid,
-  });
-});
-
-Schema.static('findByTokenAsync', function(token) {
-  const sid = parseInt(hashids.decode(token));
-  return this.findOneAsync({
-    sid,
-  });
-});
-
-export default  $['mg'].model('App', Schema);
+export default $['mg'].model('App', Schema);

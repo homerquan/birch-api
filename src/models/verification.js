@@ -8,7 +8,7 @@ const schema = {
   token: {
     type: String,
     index: true,
-    default: verGen($.config.verificationTokenSize),
+    default: verGen($['config'].verificationTokenSize),
   },
   type: {
     type: String,
@@ -20,7 +20,7 @@ const schema = {
   expireAt: {
     type: Date,
     default: Date.now,
-    index: { expires: $.config.verificationExpire },
+    index: { expires: $['config'].verificationExpire },
   },
   uid: String,
   used: {
@@ -30,30 +30,7 @@ const schema = {
   },
 };
 
-const Schema = new $.mg.Schema(schema);
+const Schema = new $['mg'].Schema(schema);
 Schema.plugin(timestamps);
-const Model = $.mg.model('verification', Schema);
 
-Schema.statics.verifyUser = function(token, cb) {
-  this.findOne(
-    {
-      token,
-    },
-    function(err, doc) {
-      if (!err) User.setVerification(doc.uid, cb);
-      else cb(err, null);
-    }
-  );
-};
-
-// send different notifications by verification type
-Schema.post('save', function(doc) {
-  const options = {};
-  if (doc && doc.type) {
-    if (doc.type === 'email') {
-      // send email
-    }
-  }
-});
-
-export default Model;
+export default $['mg'].model('verification', Schema);
