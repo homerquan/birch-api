@@ -10,7 +10,7 @@ import Verification from '../models/verification';
 
 $.log.info('start to seeding DB');
 
-const { ObjectId } = $['mg'].Types;
+const { ObjectId } = $.mg.Types;
 const changeId = list => {
   return list.map(item => {
     const newItem = item;
@@ -23,7 +23,7 @@ const populate = (Model, file) => {
   Model.find({})
     .removeAsync()
     .then(function() {
-      User.insertManyAsync(changeId(require(file)))
+      User.createAsync(...changeId(require(file)))
         .then(function() {
           $.log.info(`finished populating ${file}`);
         })

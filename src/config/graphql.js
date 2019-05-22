@@ -30,7 +30,7 @@ const init = (app, server) => {
     expressPlayground({
       endpoint: $.config.graphqlPath,
       subscriptionEndpoint:
-        $.config.graphqlProtocol +
+        $.config.graphqlSubscriptionsProtocol +
         $.config.graphqlSubscriptionsHost +
         $.config.graphqlSubscriptionsPath,
     })

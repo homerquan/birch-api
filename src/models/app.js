@@ -1,5 +1,6 @@
 import timestamps from 'mongoose-timestamp';
-import hashids from '../libs/hashids';
+import crypto from 'crypto';
+import base64url from 'base64url';
 import $ from '../libs/dollar';
 
 const schema = {
@@ -8,6 +9,12 @@ const schema = {
     min: 4,
     max: 30,
     required: true,
+  },
+  token: {
+    type: String,
+    default: () => {
+      return base64url(crypto.randomBytes($['config'].appTokenSize));
+    },
   },
   protocol: {
     type: String,
@@ -29,7 +36,7 @@ const schema = {
   },
 };
 
-const Schema = new $['mg'].Schema(schema, {
+const Schema = new $.mg.Schema(schema, {
   toObject: {
     virtuals: true,
   },
@@ -40,4 +47,4 @@ const Schema = new $['mg'].Schema(schema, {
 
 Schema.plugin(timestamps);
 
-export default $['mg'].model('App', Schema);
+export default $.mg.model('App', Schema);

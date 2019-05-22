@@ -13,6 +13,7 @@ const schema = {
   email: {
     type: String,
     lowercase: true,
+    required: true,
   },
   role: {
     type: String,
@@ -30,10 +31,10 @@ const schema = {
   verified: {
     type: Boolean,
     default: false,
-  }
+  },
 };
 
-const Schema = new $['mg'].Schema(schema, {
+const Schema = new $.mg.Schema(schema, {
   toObject: {
     virtuals: true,
     transform(doc, obj, options) {
@@ -66,13 +67,14 @@ Schema.static('setVerification', function(id) {
  * Pre-save hook
  */
 Schema.pre('save', function(next) {
-  // preserve isNew for post
+  // preserve isNew for email vaidation
   this.wasNew = this.isNew;
   // Handle new/update passwords
   if (this.isModified('password')) {
-    if (!validatePassword(this.password)) {
-      next(new Error('Invalid password'));
-    }
+    // TODO, check password strength
+    // if (!validatePassword(this.password)) {
+    //   next(new Error('Invalid password'));
+    // }
 
     // Make salt with a callback
     const _this = this;
@@ -109,32 +111,6 @@ Schema.post('save', function(doc, next) {
  * Methods
  */
 Schema.methods = {
-  /**
-   * Authenticate - check if the passwords are the same
-   *
-   * @param {String} password
-   * @param {Function} callback
-   * @return {Boolean}
-   * @api public
-   */
-  authenticate(password, callback) {
-    if (!callback) {
-      return this.password === this.encryptPassword(password);
-    }
-
-    const _this = this;
-    this.encryptPassword(password, function(err, pwdGen) {
-      if (err) {
-        callback(err);
-      }
-
-      if (_this.password === pwdGen) {
-        callback(null, true);
-      } else {
-        callback(null, false);
-      }
-    });
-  },
 
   /**
    * Make salt
@@ -183,17 +159,18 @@ Schema.methods = {
       return null;
     }
 
-    const defaultIterations = $['config'].passwordIterations;
-    const defaultKeyLength = $['config'].passwordKeyLength;
+    const defaultIterations = $.config.passwordIterations;
+    const defaultKeyLength = $.config.passwordKeyLength;
+    const digest = $.config.passwordDigest;
     const salt = new Buffer(this.salt, 'base64');
 
     if (!callback) {
       return crypto
-        .pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength)
+        .pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength, digest)
         .toString('base64');
     }
 
-    return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength, 'sha512', function(
+    return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength, digest, function(
       err,
       key
     ) {
@@ -205,4 +182,4 @@ Schema.methods = {
   },
 };
 
-export default $['mg'].model('User', Schema);
+export default $.mg.model('User', Schema);
