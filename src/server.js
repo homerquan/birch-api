@@ -15,7 +15,7 @@ import expressJwt, { UnauthorizedError as Jwt401Error } from "express-jwt";
 import expressGraphQL from "express-graphql";
 import jwt from "jsonwebtoken";
 import PrettyError from "pretty-error";
-import config from "./config";
+import config from "./config/environment";
 import backendServer from "./backend";
 import welcome from "./libs/welcome";
 import $ from './libs/dollar';

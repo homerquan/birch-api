@@ -1,6 +1,6 @@
 const figlet = require("figlet");
 const Table = require("cli-table");
-const config = require("../config");
+const config = require("../config/environment");
 const _ = require("lodash");
 
 //Use customer logger later

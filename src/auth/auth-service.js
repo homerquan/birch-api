@@ -2,10 +2,10 @@
  * @Author: homer
  * @Date:   2019-05-17 10:37:00
  * @Last Modified by:   homer
- * @Last Modified time: 2019-05-22 13:59:13
+ * @Last Modified time: 2019-05-23 09:40:58
  */
 import jwt from 'jsonwebtoken';
-import config from '../config';
+import config from '../config/environment';
 
 /**
  * Returns a jwt token signed by the app secret

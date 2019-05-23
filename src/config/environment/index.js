@@ -14,4 +14,5 @@ const config = _.merge(
   require('./shared'),
   require('./' + process.env.NODE_ENV + '.js') || {});
 
-module.exports = config;
+// Using RC to read settings in /etc/appnamerc
+module.exports = require('rc')(process.env.npm_package_name, config);;
