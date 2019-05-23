@@ -26,7 +26,7 @@ const schema = {
     type: String,
     required: true,
   },
-  disabled: {
+  active: {
     type: Boolean,
     default: true,
   },

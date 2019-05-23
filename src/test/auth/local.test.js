@@ -8,11 +8,4 @@ let validator = new ZSchema({});
 let api = supertest(`http://localhost:${config.port}`); // supertest init;
 let expect = chai.expect;
 
-describe('/graphql', function() {
-  describe('get', function() {
-    it('should respond with 200 Success', function(done) {
-     
-    });
-  });
-
-});
+// adding graphql test here

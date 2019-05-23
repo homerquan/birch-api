@@ -2,15 +2,15 @@
     {
         "_id": "507f1f77bcf86cd799439011",
         "provider": "local",
-        "username": "homer",
-        "email": "lujooo@gmail.com",
+        "username": "demo",
+        "email": "demo@gmail.com",
         "password": "demo"
     },
     {
         "_id": "507f1f77bcf86cd799439012",
         "provider": "local",
-        "username": "demo",
-        "email": "demo@gmail.com",
+        "username": "homer",
+        "email": "lujooo@gmail.com",
         "password": "demo"
     },
     {

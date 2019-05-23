@@ -19,11 +19,11 @@ const changeId = list => {
   });
 };
 
-const populate = (Model, file) => {
-  Model.find({})
+const populate = (model, file) => {
+  model.find({})
     .removeAsync()
     .then(function() {
-      User.createAsync(...changeId(require(file)))
+      model.createAsync(...changeId(require(file)))
         .then(function() {
           $.log.info(`finished populating ${file}`);
         })
@@ -34,3 +34,4 @@ const populate = (Model, file) => {
 };
 
 populate(User, './users.json');
+populate(App, './apps.json');

@@ -10,10 +10,10 @@ import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import errorHandler from 'errorhandler';
 import path from 'path';
-import passport from 'passport';
 import session from 'express-session';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import middlewares from '../middlewares';
 import config from './environment';
 
 const init = app => {
@@ -27,6 +27,7 @@ const init = app => {
   );
   app.use(bodyParser.json());
   app.use(methodOverride());
+  app.use(middlewares);
 
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
