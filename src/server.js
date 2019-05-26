@@ -16,7 +16,7 @@ import expressGraphQL from "express-graphql";
 import jwt from "jsonwebtoken";
 import PrettyError from "pretty-error";
 import config from "./config/environment";
-import backendServer from "./backend";
+import apiServer from "./apiServer";
 import welcome from "./libs/welcome";
 import $ from './libs/dollar';
 
@@ -33,9 +33,9 @@ if (config.env === 'development') {
   app.enable("trust proxy");
 }
 
-// Load backend (api, auth, graphql, socketio)
+// Load api server (api, auth, graphql, socketio)
 // -----------------------------------------------------------------------------
-backendServer(app, server);
+apiServer(app, server);
 
 //
 // Launch the server

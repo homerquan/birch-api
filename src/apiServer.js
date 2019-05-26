@@ -13,8 +13,8 @@ import { init as initExpress } from './config/express';
 import { init as initGraphQL } from './config/graphql';
 import { load as loadRoutes } from './routes';
 
-// register app with backend
-const backend = (app, server) => {
+// register app with api server
+const apiServer = (app, server) => {
   // Connect to MongoDB
   $.mg.connect($.config.mongo.uri, $.config.mongo.options);
   $.mg.connection.on('error', function(err) {
@@ -24,7 +24,7 @@ const backend = (app, server) => {
 
   // Populate databases with sample data
   if ($.config.env === 'development' && $.config.seedDB) {
-    require('./seed/seed');
+    require('./seed');
   }
 
   // socketio server
@@ -39,4 +39,4 @@ const backend = (app, server) => {
   loadRoutes(app);
 };
 
-export default backend;
+export default apiServer;

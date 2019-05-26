@@ -3,7 +3,7 @@
         "_id": "5cd4e5eed2c519af0681d4de",
         "protocol": "http",
         "active": true,
-        "name": "test app 1",
+        "name": "Demo App",
         "hostname": "www.foo1.com",
         "_owner": "507f1f77bcf86cd799439011"
     },

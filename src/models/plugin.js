@@ -10,20 +10,20 @@ import $ from '../libs/dollar';
 
 const schema = {
   name: {
-  	type: String,
+    type: String,
   },
   desceription: {
-  	type: String,
+    type: String,
   },
   namespace: {
-  	type: String,
+    type: String,
   },
   data: {
     type: Object,
-  }
+  },
 };
 
-const Schema = new $['mg'].Schema(schema, {
+const Schema = new $.mg.Schema(schema, {
   toObject: {
     virtuals: true,
   },
@@ -34,4 +34,4 @@ const Schema = new $['mg'].Schema(schema, {
 
 Schema.plugin(timestamps);
 
-export default $['mg'].model('Plugin', Schema);
+export default $.mg.model('Plugin', Schema);

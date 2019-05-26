@@ -13,7 +13,7 @@ const schema = {
   token: {
     type: String,
     default: () => {
-      return base64url(crypto.randomBytes($['config'].appTokenSize));
+      return base64url(crypto.randomBytes($.config.appTokenSize));
     },
   },
   protocol: {

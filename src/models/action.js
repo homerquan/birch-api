@@ -3,7 +3,7 @@
  * @Author: homer
  * @Date:   2019-05-09 12:11:20
  * @Last Modified by:   homer
- * @Last Modified time: 2019-05-16 18:08:10
+ * @Last Modified time: 2019-05-23 14:59:47
  */
 
 import timestamps from 'mongoose-timestamp';
@@ -20,13 +20,17 @@ const schema = {
     type: String,
     index: true,
   },
+  _session: {
+    type: String,
+    index: true,
+  },
   _owner: {
     type: String,
     index: true,
   },
 };
 
-const Schema = new $['mg'].Schema(schema, {
+const Schema = new $.mg.Schema(schema, {
   toObject: {
     virtuals: true,
   },
@@ -37,4 +41,4 @@ const Schema = new $['mg'].Schema(schema, {
 
 Schema.plugin(timestamps);
 
-export default $['mg'].model('Action', Schema);
+export default $.mg.model('Action', Schema);

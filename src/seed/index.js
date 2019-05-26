@@ -6,6 +6,7 @@
 import $ from '../libs/dollar';
 import App from '../models/app';
 import User from '../models/user';
+import Session from '../models/session';
 import Verification from '../models/verification';
 
 $.log.info('start to seeding DB');
@@ -14,16 +15,20 @@ const { ObjectId } = $.mg.Types;
 const changeId = list => {
   return list.map(item => {
     const newItem = item;
-    newItem._id = new ObjectId(item._id);
+    if (item._id) {
+      newItem._id = new ObjectId(item._id);
+    }
     return newItem;
   });
 };
 
 const populate = (model, file) => {
-  model.find({})
+  model
+    .find({})
     .removeAsync()
     .then(function() {
-      model.createAsync(...changeId(require(file)))
+      model
+        .createAsync(...changeId(require(file)))
         .then(function() {
           $.log.info(`finished populating ${file}`);
         })
@@ -33,5 +38,6 @@ const populate = (model, file) => {
     });
 };
 
-populate(User, './users.json');
-populate(App, './apps.json');
+populate(User, './data/users.json');
+populate(App, './data/apps.json');
+populate(Session, './data/sessions.json');

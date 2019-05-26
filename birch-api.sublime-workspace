@@ -1,0 +1,580 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 2883,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"js",
+				"JsPrettier: Format Code"
+			],
+			[
+				"es",
+				"ESLint"
+			],
+			[
+				"json",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"setting sync",
+				"Sync Settings: Download"
+			],
+			[
+				"jsp",
+				"JsPrettier: Format Code"
+			],
+			[
+				"esl",
+				"ESLint"
+			],
+			[
+				"syn",
+				"Sync Settings: Upload"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"sync",
+				"Sync Settings: Download"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"theme",
+				"UI: Select Theme"
+			],
+			[
+				"term",
+				"Terminality: Browse Commands..."
+			],
+			[
+				"jspr",
+				"JsPrettier: Format Code"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 136.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/homer/Projects/birch-api"
+	],
+	"file_history":
+	[
+		"/Users/homer/Projects/birch-api/birch-api.sublime-project",
+		"/Users/homer/Library/Application Support/Sublime Text 3/Packages/JsPrettier/JsPrettier.sublime-settings",
+		"/Users/homer/Projects/birch-api/src/model/user.js",
+		"/Users/homer/Library/Application Support/Sublime Text 3/Packages/User/JsPrettier.sublime-settings",
+		"/Users/homer/Projects/birch-api/src/backend.js",
+		"/Users/homer/Projects/birch-api/src/model/notification.js",
+		"/Users/homer/Projects/birch-api/src/model/plugin.js",
+		"/Users/homer/Projects/birch-api/src/model/experience_block.js",
+		"/Users/homer/Projects/birch-api/src/model/experience_description.js",
+		"/Users/homer/Projects/birch-api/src/model/system_activity.js",
+		"/Users/homer/Projects/birch-api/src/model/visitor.js",
+		"/Users/homer/Projects/birch-api/src/model/client.js",
+		"/Users/homer/Projects/birch-api/src/model/action.js",
+		"/Users/homer/Projects/birch-api/src/model/command.js",
+		"/Users/homer/Projects/birch-api/src/model/session.js",
+		"/Users/homer/Projects/birch-api/src/config/seneca.js",
+		"/Users/homer/Projects/birch-api/src/config/index.js",
+		"/Users/homer/Projects/birch-api/src/server.js",
+		"/Users/homer/Projects/birch-api/src/seed/seed.js",
+		"/Users/homer/Projects/birch-api/src/config/seed.js",
+		"/Users/homer/Projects/birch-api/src/seed/users.json",
+		"/Users/homer/Projects/birch-api/src/seed/data.json",
+		"/Users/homer/Projects/shared/devops/MongoDB Cluster/note.md",
+		"/Users/homer/Projects/birch-api/src/config/environment/production.js",
+		"/Users/homer/Projects/birch-api/src/model/user-model.js",
+		"/Users/homer/Projects/birch-api/src/graphql/models/user.js",
+		"/Users/homer/Projects/birch-api/src/graphql/schema/index.js",
+		"/Users/homer/Projects/birch-api/src/config/environment/development.js",
+		"/Users/homer/Projects/birch-api/src/config/environment/common.js",
+		"/Users/homer/Projects/birch-api/README.md",
+		"/Users/homer/Projects/birch-api/src/config/graphql.js",
+		"/Users/homer/Projects/birch-api/src/graphql/models/user.js.BK",
+		"/Users/homer/Projects/birch-api/package.json",
+		"/Users/homer/Projects/birch-api/src/model/app-model.js",
+		"/Users/homer/Projects/birch-api/src/libs/dollar.js",
+		"/Users/homer/Projects/birch-api/src/model/verification-model.js",
+		"/Users/homer/Projects/birch-api/src/var/index.js",
+		"/Users/homer/Projects/birch-api/src/graphql/compose-schema.js",
+		"/Users/homer/Projects/birch-api/src/model/user.model.js",
+		"/Users/homer/Projects/birch-api/src/socket/app.socketio.logic.js",
+		"/Users/homer/Projects/birch-api/src/model/verification.model.js",
+		"/Users/homer/Projects/birch-api/src/libs/seneca.js",
+		"/Users/homer/Projects/birch-api/src/model/app/app.model.js",
+		"/Users/homer/Projects/birch-api/src/microservices/api.js",
+		"/Users/homer/Projects/birch-api/src/config/express.js",
+		"/Users/homer/Projects/birch-api/src/var/errors.json",
+		"/Users/homer/Projects/birch-api/src/libs/httpError.js",
+		"/Users/homer/Projects/birch-api/src/model/user/user.model.spec.js",
+		"/Users/homer/Projects/birch-api/src/routes.js",
+		"/Users/homer/Projects/birch-api/src/graphql/resolvers/index.js",
+		"/Users/homer/Projects/birch-api/src/config/grpc.js",
+		"/Users/homer/Projects/birch-api/src/config/socketio.js",
+		"/Users/homer/Projects/birch-api/src/grpc/handlers/SuggestResponseHandler.js",
+		"/Users/homer/Projects/birch-api-mock/app.yaml",
+		"/Users/homer/Corp/reflen-www-react/components/FeaturesGrid/index.js",
+		"/Users/homer/Corp/reflen-www-react/.git/config",
+		"/Users/homer/Corp/reflen-www-react/components/GenericHeader/index.js",
+		"/Users/homer/Corp/reflen-www-react/pages/product.js",
+		"/Users/homer/Corp/reflen-www-react/components/VideoFeature/index.js",
+		"/Users/homer/Corp/reflen-www-react/components/FeatureCards/index.js",
+		"/Users/homer/Corp/reflen-www-react/components/FeatureCards/styled.js",
+		"/Users/homer/Corp/reflen-www-react/components/CTAEmail/index.js",
+		"/Users/homer/Corp/reflen-www-react/components/FeaturesGrid/styled.js",
+		"/Users/homer/Corp/reflen-www-react/components/FeatureCircleImage/index.js",
+		"/Users/homer/Corp/reflen-www-react/components/HomeHeader/index.js",
+		"/Users/homer/Corp/reflen-www-react/components/SiteNavigation/index.js",
+		"/Users/homer/Corp/reflen-www-react/pages/index.js",
+		"/Users/homer/Projects/birch/src/config/enviroment/shared.js",
+		"/System/Library/LaunchDaemons/com.apple.ManagedClient.enroll.plist",
+		"/Users/homer/Projects/birch/tools/start.js",
+		"/Users/homer/Projects/birch/package.json",
+		"/Users/homer/Projects/birch/src/server.js",
+		"/Users/homer/Projects/birch/tools/webpack.config.js",
+		"/Users/homer/Projects/birch/README.md",
+		"/System/Library/CoreServices/ManagedClient.app/Contents/Resources/com.apple.ManagedClient.enroll.plist",
+		"/Users/homer/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/homer/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/homer/Library/Application Support/Sublime Text 3/Packages/User/SyncSettings.sublime-settings"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 106.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"share.js",
+			"tab"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "package.json",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2883,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.1147.region_keys":
+							[
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										2881,
+										2882
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										0,
+										1
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										2881,
+										2882
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										0,
+										1
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"c_time":
+							[
+								128,
+								3,
+								99,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								100,
+								97,
+								116,
+								101,
+								116,
+								105,
+								109,
+								101,
+								10,
+								113,
+								0,
+								67,
+								10,
+								7,
+								227,
+								5,
+								22,
+								12,
+								36,
+								10,
+								6,
+								231,
+								226,
+								113,
+								1,
+								133,
+								113,
+								2,
+								82,
+								113,
+								3,
+								46
+							],
+							"syntax": "Packages/Theme - Afterglow/Prefs/Langs/npm JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.SublimeLinter Messages":
+	{
+		"height": 104.0
+	},
+	"output.exec":
+	{
+		"height": 108.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "birch-api.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 316.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

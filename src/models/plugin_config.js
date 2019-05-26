@@ -26,7 +26,7 @@ const schema = {
   },
 };
 
-const Schema = new $['mg'].Schema(schema, {
+const Schema = new $.mg.Schema(schema, {
   toObject: {
     virtuals: true,
   },
@@ -37,7 +37,4 @@ const Schema = new $['mg'].Schema(schema, {
 
 Schema.plugin(timestamps);
 
-export default $['mg'].model('Visitor', Schema);
-
-
-
+export default $.mg.model('Visitor', Schema);

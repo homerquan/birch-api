@@ -1,9 +1,9 @@
 /*
-* @Author: homer
-* @Date:   2019-05-09 12:20:50
-* @Last Modified by:   homer
-* @Last Modified time: 2019-05-16 18:31:41
-*/
+ * @Author: homer
+ * @Date:   2019-05-09 12:20:50
+ * @Last Modified by:   homer
+ * @Last Modified time: 2019-05-16 18:31:41
+ */
 
 import timestamps from 'mongoose-timestamp';
 import hashids from '../libs/hashids';
@@ -11,9 +11,9 @@ import $ from '../libs/dollar';
 
 const schema = {
   raw: {
-  	type: String, //Raw JSON DL of exmperience
+    type: String, // Raw JSON DL of exmperience
   },
-  status : {
+  status: {
     type: String,
     default: 'waiting',
     enum: ['ready', 'error', 'waiting'],
@@ -28,7 +28,7 @@ const schema = {
   },
 };
 
-const Schema = new $['mg'].Schema(schema, {
+const Schema = new $.mg.Schema(schema, {
   toObject: {
     virtuals: true,
   },
@@ -39,4 +39,4 @@ const Schema = new $['mg'].Schema(schema, {
 
 Schema.plugin(timestamps);
 
-export default $['mg'].model('Experience', Schema);
+export default $.mg.model('Experience', Schema);
