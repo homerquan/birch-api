@@ -22,9 +22,14 @@ const apiServer = (app, server) => {
     process.exit(-1);
   });
 
+  // Gen Sample Data
+  if ($.config.genSeedData) {
+    require('./tools/genSeedData');
+  }
+
   // Populate databases with sample data
-  if ($.config.env === 'development' && $.config.seedDB) {
-    require('./seed');
+  if ($.config.seedDB) {
+    require('./tools/seed');
   }
 
   // socketio server

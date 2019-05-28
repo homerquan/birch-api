@@ -8,6 +8,7 @@ import App from '../models/app';
 import User from '../models/user';
 import Session from '../models/session';
 import Verification from '../models/verification';
+import Action from '../models/action';
 
 $.log.info('start to seeding DB');
 
@@ -41,3 +42,4 @@ const populate = (model, file) => {
 populate(User, './data/users.json');
 populate(App, './data/apps.json');
 populate(Session, './data/sessions.json');
+populate(Action, './data/actions.json');

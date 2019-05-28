@@ -4,6 +4,7 @@
 module.exports = {
 	// Seed database on startup
 	seedDB: true,
+	genSeedData: true,
 	// Server port
     port: process.env.PORT || 8003,
 	mongo: {

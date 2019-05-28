@@ -1,0 +1,20 @@
+[
+     {
+        "_id": "6cd4e5eed2c519af0681d400",
+        "protocol": "http",
+        "active": true,
+        "name": "DEMO APP",
+        "hostname": "demo.com",
+        "_owner": "607f1f77bcf86cd799439011"
+    },
+    {{#repeat 100}}
+    {
+        "_id": "5cd4e5eed2c519af0681d4{{fixLenIndex 2}}",
+        "protocol": "http",
+        "active": true,
+        "name": "{{lorem 2}}",
+        "hostname": "{{domain}}",
+        "_owner": "607f1f77bcf86cd799439011"
+    }
+    {{/repeat}}
+]

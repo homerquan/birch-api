@@ -1,0 +1,19 @@
+[
+    
+    {
+        "_id": "607f1f77bcf86cd799439011",
+        "provider": "local",
+        "username": "demo",
+        "email": "demo@gmail.com",
+        "password": "demo"
+    },
+    {{#repeat 100}}
+    {
+        "_id": "507f1f77bcf86cd7994390{{fixLenIndex 2}}",
+        "provider": "local",
+        "username": "demo-{{@index}}",
+        "email": "{{email}}",
+        "password": "demo"
+    }
+    {{/repeat}}
+]
