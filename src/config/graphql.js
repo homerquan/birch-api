@@ -15,6 +15,9 @@ const init = (app, server) => {
   // Register API middleware
   const graphqlMiddleware = expressGraphQL(req => ({
     schema,
+    context: {
+      user: req.user,
+    },
     rootValue: { request: req },
     subscriptionsEndpoint: $.config.graphqlSubscriptionsPath,
   }));

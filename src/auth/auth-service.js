@@ -14,7 +14,7 @@ export const signToken = (id, role) => {
   return jwt.sign({ _id: id, role }, config.secrets.session, {
     expiresIn: config.loginTokenExpireIn,
   });
-}
+};
 
 /**
  * Returns a refresh token signed by the app secret
@@ -23,8 +23,8 @@ export const signRefreshToken = (id, role) => {
   return jwt.sign({ _id: id, role }, config.secrets.session, {
     expiresIn: config.refreshTokenExpireIn,
   });
-}
+};
 
-export const verifyRefreshToken = (token) => {
-	return jwt.verify(token, config.secrets.session);
-}
+export const verifyRefreshToken = token => {
+  return jwt.verify(token, config.secrets.session);
+};
