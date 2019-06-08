@@ -6,7 +6,6 @@ const pubsub = new PubSub();
 // test
 setInterval(() => {
   const ts = new Date();
-  console.log(`Test GraphQL Sub:${ts.toString()}`);
   pubsub.publish('test', ts.toString());
 }, 1000);
 

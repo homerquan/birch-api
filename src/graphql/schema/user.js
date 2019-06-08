@@ -34,12 +34,12 @@ export const load = schemaComposer => {
 
   // add subscription here
   schemaComposer.Subscription.addFields({
-    test: {
+    globalNotificationChange: {
       type: 'String',
       resolve: payload => {
         return payload;
       },
-      subscribe: () => pubsub.asyncIterator('test'),
+      subscribe: () => pubsub.asyncIterator('globalNotificationChange'),
     },
   });
 };
