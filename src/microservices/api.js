@@ -1,6 +1,6 @@
 // Microservice to the business bus
 
-import { pubsub } from '../graphql/subscriptions';
+import pubsub from '../graphql/pubsub';
 import topics from '../graphql/topics';
 
 module.exports = [

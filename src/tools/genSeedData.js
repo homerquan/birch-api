@@ -18,7 +18,6 @@ const helpers = {
      }
   	 const zeroLen = n-String(i).length;
      const zeroStr = new Array(zeroLen + 1).join('0');
-     console.log(zeroStr + i);
      return zeroStr + i;
   }
 };

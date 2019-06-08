@@ -1,10 +1,17 @@
+import bearerToken from 'express-bearer-token';
+import { verifyRefreshToken } from '../auth/auth-service';
 
-//Translate JWT to User (id and role), overwrite variables
+// Translate JWT to User (id and role), overwrite variables
 const jwtToUser = (req, res, next) => {
-  //console.log(req.body);
+  try {
+    const decoded = verifyRefreshToken(req.token);
+    req.user = decoded;
+  } catch (err) {
+    console.error('incorrect token');
+  }
   next();
 };
 
-var middleware = [jwtToUser];
+const middleware = [bearerToken(), jwtToUser];
 
 module.exports = middleware;
