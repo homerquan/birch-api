@@ -6,6 +6,7 @@
  */
 import { UserTC } from '../models/user';
 import pubsub from '../pubsub';
+import SUBSCRIPTIONS from '../../constants/subscriptions.json';
 
 export const load = schemaComposer => {
   schemaComposer.Query.addFields({
@@ -32,14 +33,14 @@ export const load = schemaComposer => {
     userRemoveMany: UserTC.getResolver('removeMany'),
   });
 
-  // add subscription here
+  // subscription
   schemaComposer.Subscription.addFields({
-    globalNotificationChange: {
+    [SUBSCRIPTIONS.globalNotificationChange]: {
       type: 'String',
       resolve: payload => {
         return payload;
       },
-      subscribe: () => pubsub.asyncIterator('globalNotificationChange'),
+      subscribe: () => pubsub.asyncIterator(SUBSCRIPTIONS.globalNotificationChange),
     },
   });
 };

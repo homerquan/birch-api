@@ -13,7 +13,7 @@ const mongoose = Promise.promisifyAll(require('mongoose'));
 let instance = null;
 
 class Dollar {
-  constructor() {
+  constructor() 
     if (!instance) {
       instance = this;
     }

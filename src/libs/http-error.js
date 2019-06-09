@@ -1,4 +1,4 @@
-import errors from '../var/errors.json';
+import errors from '../constants/errors.json';
 
 const httpError = reason => {
   return (req, res) => {
