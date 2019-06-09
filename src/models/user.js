@@ -162,7 +162,7 @@ Schema.methods = {
     const defaultIterations = $.config.passwordIterations;
     const defaultKeyLength = $.config.passwordKeyLength;
     const digest = $.config.passwordDigest;
-    const salt = new Buffer(this.salt, 'base64');
+    const salt = Buffer.from(this.salt, 'base64');
 
     if (!callback) {
       return crypto

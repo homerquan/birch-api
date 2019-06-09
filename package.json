@@ -21,7 +21,7 @@
     "start": "babel-node src/server",
     "debug": "babel-node debug src/server",
     "generate": "cd src;prisma generate",
-    "inspect": "babel-node --inspect --debug-brk src/server",
+    "inspect": "babel-node --inspect-brk src/server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

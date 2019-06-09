@@ -7,6 +7,7 @@
 import { UserTC } from '../models/user';
 import pubsub from '../pubsub';
 import SUBSCRIPTIONS from '../../constants/subscriptions.json';
+import { withFilter } from 'graphql-subscriptions';
 
 export const load = schemaComposer => {
   schemaComposer.Query.addFields({

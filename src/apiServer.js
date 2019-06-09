@@ -8,7 +8,6 @@
 import express from 'express';
 import cors from 'cors';
 import $ from './libs/dollar';
-import { init as initSocketio } from './config/socketio';
 import { init as initExpress } from './config/express';
 import { init as initGraphQL } from './config/graphql';
 import { load as loadRoutes } from './routes';
@@ -32,13 +31,6 @@ const apiServer = (app, server) => {
     require('./tools/seed');
   }
 
-  // socketio server
-  const socketio = require('socket.io')(server, {
-    serveClient: $.config.env !== 'production',
-    path: '/socket.io-client',
-  });
-
-  initSocketio(socketio.of($.config.socketNamespace));
   initExpress(app);
   initGraphQL(app, server);
   loadRoutes(app);

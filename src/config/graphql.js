@@ -4,12 +4,21 @@ import bodyParser from 'body-parser';
 import { PubSub } from 'graphql-subscriptions';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import { execute, subscribe } from 'graphql';
-import { makeExecutableSchema } from 'graphql-tools';
-// import resolvers from '../graphql/resolvers';
-// import typeDefs from '../graphql/schema';
 import jwt from 'jsonwebtoken';
 import schema from '../graphql/schema';
+import * as socketLogic from '../libs/socket-logic';
 import $ from '../libs/dollar';
+
+// When the user disconnects.. perform this
+const onDisconnect = socket => {
+  socketLogic.disconnect(socket);
+};
+
+// When the user connects.. perform this
+const onConnect = socket => {
+  // Insert sockets below
+  socketLogic.connect(socket);
+};
 
 const init = (app, server) => {
   // Register API middleware
@@ -48,6 +57,20 @@ const init = (app, server) => {
       schema,
       execute,
       subscribe,
+      onConnect: (connectionParams, webSocket, context) => {
+        if (connectionParams.token) {
+          const decoded = jwt.decode(connectionParams.token);
+          webSocket.decodedToken = decoded;
+          onConnect(decoded);
+        } else {
+          $.log.error('No token in socket connecting.');
+          return false;
+        }
+      },
+      onDisconnect: (webSocket, context) => {
+        onDisconnect(webSocket.decodedToken);
+        $.log.info('Disconnected websocket.');
+      },
     },
     {
       server,

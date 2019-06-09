@@ -26,7 +26,7 @@ const changeId = list => {
 const populate = (model, file) => {
   model
     .find({})
-    .removeAsync()
+    .deleteManyAsync()
     .then(function() {
       model
         .createAsync(...changeId(require(file)))
