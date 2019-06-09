@@ -4,10 +4,10 @@
  * @Last Modified by:   homer
  * @Last Modified time: 2019-05-09 17:35:52
  */
+import { withFilter } from 'graphql-subscriptions';
 import { UserTC } from '../models/user';
 import pubsub from '../pubsub';
 import SUBSCRIPTIONS from '../../constants/subscriptions.json';
-import { withFilter } from 'graphql-subscriptions';
 
 export const load = schemaComposer => {
   schemaComposer.Query.addFields({
@@ -41,7 +41,13 @@ export const load = schemaComposer => {
       resolve: payload => {
         return payload;
       },
-      subscribe: () => pubsub.asyncIterator(SUBSCRIPTIONS.globalNotificationChange),
+      // subscribe: () => pubsub.asyncIterator(SUBSCRIPTIONS.globalNotificationChange),
+      subscribe: withFilter(
+        () => pubsub.asyncIterator(SUBSCRIPTIONS.globalNotificationChange),
+        (payload, variables, context) => {
+          return payload._owner === context.user._id;
+        }
+      ),
     },
   });
 };

@@ -1,11 +1,10 @@
-import config from '../../config/environment';
 import chai from 'chai';
 import supertest from 'supertest';
+import config from '../../config/environment';
 
-let ZSchema = require('z-schema');
-let validator = new ZSchema({});
+const validator = new ZSchema({});
 
-let api = supertest(`http://localhost:${config.port}`); // supertest init;
-let expect = chai.expect;
+const api = supertest(`http://localhost:${config.port}`); // supertest init;
+const { expect } = chai;
 
 // adding graphql test here

@@ -1,10 +1,9 @@
 import expressGraphQL from 'express-graphql';
 import expressPlayground from 'graphql-playground-middleware-express';
 import bodyParser from 'body-parser';
-import { PubSub } from 'graphql-subscriptions';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import { execute, subscribe } from 'graphql';
-import jwt from 'jsonwebtoken';
+import { verifyToken } from '../auth/auth-service';
 import schema from '../graphql/schema';
 import * as socketLogic from '../libs/socket-logic';
 import $ from '../libs/dollar';
@@ -59,8 +58,9 @@ const init = (app, server) => {
       subscribe,
       onConnect: (connectionParams, webSocket, context) => {
         if (connectionParams.token) {
-          const decoded = jwt.decode(connectionParams.token);
+          const decoded = verifyToken(connectionParams.token);
           webSocket.decodedToken = decoded;
+          context.user = decoded;
           onConnect(decoded);
         } else {
           $.log.error('No token in socket connecting.');

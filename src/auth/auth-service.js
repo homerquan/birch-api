@@ -25,6 +25,6 @@ export const signRefreshToken = (id, role) => {
   });
 };
 
-export const verifyRefreshToken = token => {
+export const verifyToken = token => {
   return jwt.verify(token, config.secrets.session);
 };

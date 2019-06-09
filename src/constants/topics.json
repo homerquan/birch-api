@@ -1,0 +1,7 @@
+ {
+	"createConversation": "CREATE_CONVERSATION_TOPIC",
+	"updateConversation": "UPDATE_CONVERSATION_TOPIC",
+	"createMessage" : "CREATE_MESSAGE_TOPIC",
+	"updateMessage" : "UPDATE_MESSAGE_TOPIC",
+	"receiveSuggestion": "RECEIVE_SUGGESTION_TOPIC"
+}
