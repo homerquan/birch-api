@@ -16,7 +16,8 @@ setInterval(() => {
   	id: 'abc',
   	type: 'general',
     text: `123${ts}`,
-    _owner: '607f1f77bcf86cd799439011',
+    //_owner: '607f1f77bcf86cd799439011',
+    _owner: '*',
   });
 }, 10000);
 
