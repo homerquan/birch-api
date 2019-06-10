@@ -2,32 +2,21 @@
  * Express configuration
  */
 
-import express from 'express';
-import favicon from 'serve-favicon';
 import morgan from 'morgan';
 import compression from 'compression';
 import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import errorHandler from 'errorhandler';
-import path from 'path';
-import session from 'express-session';
-import mongoose from 'mongoose';
 import cors from 'cors';
-import middlewares from '../middlewares';
 import config from './environment';
 
 const init = app => {
   const env = app.get('env');
 
   app.use(compression());
-  app.use(
-    bodyParser.urlencoded({
-      extended: false,
-    })
-  );
+  app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(methodOverride());
-  app.use(middlewares);
 
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');

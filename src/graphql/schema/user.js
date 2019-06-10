@@ -34,20 +34,4 @@ export const load = schemaComposer => {
     userRemoveMany: UserTC.getResolver('removeMany'),
   });
 
-  // subscription
-  schemaComposer.Subscription.addFields({
-    [SUBSCRIPTIONS.globalNotificationChange]: {
-      type: 'String',
-      resolve: payload => {
-        return payload;
-      },
-      // subscribe: () => pubsub.asyncIterator(SUBSCRIPTIONS.globalNotificationChange),
-      subscribe: withFilter(
-        () => pubsub.asyncIterator(SUBSCRIPTIONS.globalNotificationChange),
-        (payload, variables, context) => {
-          return payload._owner === context.user._id;
-        }
-      ),
-    },
-  });
 };

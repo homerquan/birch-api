@@ -23,9 +23,6 @@ const init = (app, server) => {
   // Register API middleware
   const graphqlMiddleware = expressGraphQL(req => ({
     schema,
-    context: {
-      user: req.user,
-    },
     rootValue: { request: req },
     subscriptionsEndpoint: $.config.graphqlSubscriptionsPath,
   }));
@@ -51,25 +48,31 @@ const init = (app, server) => {
 
   // GraphQL subscription
   // create subscription server
-  new SubscriptionServer(
+  const subscriptionServer = new SubscriptionServer(
     {
       schema,
       execute,
       subscribe,
-      onConnect: (connectionParams, webSocket, context) => {
+      onConnect: (connectionParams, webSocket) => {
         if (connectionParams.token) {
           const decoded = verifyToken(connectionParams.token);
           webSocket.decodedToken = decoded;
-          context.user = decoded;
           onConnect(decoded);
-        } else {
-          $.log.error('No token in socket connecting.');
-          return false;
+          return true;
         }
+        $.log.error('No token in socket connecting.');
+        return false;
       },
-      onDisconnect: (webSocket, context) => {
+      onDisconnect: webSocket => {
         onDisconnect(webSocket.decodedToken);
-        $.log.info('Disconnected websocket.');
+      },
+      onOperation: (message, params, webSocket) => {
+        return {
+          ...params,
+          context: {
+            user: webSocket.decodedToken, // This is important! used by subscription filters
+          },
+        };
       },
     },
     {

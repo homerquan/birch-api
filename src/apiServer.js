@@ -5,12 +5,11 @@
  *
  */
 
-import express from 'express';
-import cors from 'cors';
 import $ from './libs/dollar';
 import { init as initExpress } from './config/express';
 import { init as initGraphQL } from './config/graphql';
 import { load as loadRoutes } from './routes';
+import middlewares from './middlewares';
 
 // register app with api server
 const apiServer = (app, server) => {
@@ -30,6 +29,8 @@ const apiServer = (app, server) => {
   if ($.config.seedDB) {
     require('./tools/seed');
   }
+
+  app.use(middlewares);
 
   initExpress(app);
   initGraphQL(app, server);

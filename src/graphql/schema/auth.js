@@ -5,9 +5,8 @@
  * @Last Modified time: 2019-05-22 14:00:44
  */
 
-import {signToken, signRefreshToken, verifyRefreshToken} from '../../auth/auth-service';
+import { signToken, signRefreshToken, verifyRefreshToken } from '../../auth/auth-service';
 import User from '../../models/user';
-
 
 export const load = schemaComposer => {
   const loginResolver = schemaComposer.createResolver({
@@ -30,9 +29,8 @@ export const load = schemaComposer => {
           token: signToken(user._id, user.role),
           refreshToken: signRefreshToken(user._id, user.role),
         };
-      } else {
-        throw new Error('This password is not correct.');
       }
+      throw new Error('This password is not correct.');
     },
   });
 
@@ -40,19 +38,19 @@ export const load = schemaComposer => {
     name: 'refresh',
     type: `type AuthToken { token: String, refreshToken: String }`,
     args: {
-      refreshToken:'String!',
+      refreshToken: 'String!',
     },
     resolve: async ({ source, args, context, info }) => {
       const decoded = verifyRefreshToken(args.refreshToken);
-      if(!decoded) {
+      if (!decoded) {
         throw new Error('The token is incorrect.');
       }
       const token = signToken(decoded._id, decoded.role);
       const refreshToken = signRefreshToken(decoded._id, decoded.role);
       return {
-          token,
-          refreshToken
-      };      
+        token,
+        refreshToken,
+      };
     },
   });
 
