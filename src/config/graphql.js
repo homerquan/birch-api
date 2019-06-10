@@ -60,7 +60,6 @@ const init = (app, server) => {
           onConnect(decoded);
           return true;
         }
-        $.log.error('No token in socket connecting.');
         return false;
       },
       onDisconnect: webSocket => {
